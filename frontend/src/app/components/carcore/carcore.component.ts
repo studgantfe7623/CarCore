@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Car } from 'src/app/models/car.model';
+import { CarcoreService } from 'src/app/services/carcore.service';
 
 @Component({
   selector: 'app-carcore',
@@ -9,26 +10,19 @@ import { Car } from 'src/app/models/car.model';
 export class CarcoreComponent {
 
   cars: Car[] = []
-  //   {
-  //     id: '1',
-  //     make: 'BMW',
-  //     model: "750 iL"
-  //   },
-  //   {
-  //     id: '2',
-  //     make: 'BMW',
-  //     model: "M2"
-  //   },
-  //   {
-  //     id: '3',
-  //     make: 'BMW',
-  //     model: "340i"
-  //   }
-  // ];
-  
-  constructor() { }
+
+  constructor(private carcoreService: CarcoreService) { }
 
   ngOnInit(): void {
-    this.cars.push()
+    this.carcoreService.getModelsForMake()
+      .subscribe({
+        next: (cars) => {
+          this.cars = cars;
+          console.log(cars);
+        },
+        error: (response) => {
+          console.log(response)
+        }
+      })
   }
 }
