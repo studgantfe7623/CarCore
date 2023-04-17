@@ -8,13 +8,7 @@ import { CarlistService } from 'src/app/services/carcore.service';
   styleUrls: ['./carlist.component.css']
 })
 export class CarlistComponent {
-
-
   cars: Car[] = []
-
-
-
-  
 
   constructor(private carlistService: CarlistService) { }
 
