@@ -36,7 +36,7 @@ namespace Carcore.Controllers
         [Route("getAllMakes")]
         [HttpGet]
         public async Task<List<CarModel>> GetAllMakes()
-        { 
+        {
             string url = "https://vpic.nhtsa.dot.gov/api/vehicles/GetAllMakes?format=json";
             List<string> allowedMakes = _config.GetSection("AllowedMakes").Get<List<string>>();
 
@@ -62,12 +62,12 @@ namespace Carcore.Controllers
 
         // todo: Nach welcher Marke sucht der client?
         [Route("GetModelsForMake")]
-        [HttpGet]
+        [HttpPost]
         //public async Task<List<CarModel>> GetModelsForMake(Car car)
-        public async Task<List<CarModel>> GetModelsForMake()
+        public async Task<List<CarModel>> GetModelsForMake([FromBody] string selectedMake)
         {
             //var response = string.Empty;
-            string url = "https://vpic.nhtsa.dot.gov/api/vehicles/getmodelsformake/honda?format=json";
+            string url = "https://vpic.nhtsa.dot.gov/api/vehicles/getmodelsformake/" + selectedMake + "?format=json";
 
             using (var client = new HttpClient())
             {
@@ -79,7 +79,7 @@ namespace Carcore.Controllers
                 {
                     string responseContent = await response.Content.ReadAsStringAsync();
                     CarResultModel result = JsonConvert.DeserializeObject<CarResultModel>(responseContent);
-                    return result.Results.Take(3).ToList();
+                    return result.Results.ToList();
                 }
                 else
                 {
@@ -87,6 +87,5 @@ namespace Carcore.Controllers
                 }
             }
         }
-
     }
 }
