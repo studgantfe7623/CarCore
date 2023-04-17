@@ -3,13 +3,15 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CarcoreComponent } from './components/carcore/carcore.component';
+import { CarlistComponent } from './components/carcore/carlist/carlist.component';
 import { HttpClientModule } from '@angular/common/http';
+import { MakeDropdownComponent } from './components/carcore/make-dropdown/make-dropdown.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CarcoreComponent
+    CarlistComponent,
+    MakeDropdownComponent
   ],
   imports: [
     BrowserModule,
