@@ -7,15 +7,12 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class CarcoreService {
+export class CarlistService {
 
   baseApiUrl: string = environment.baseApiUrl;
 
   constructor(private http: HttpClient) { }
 
-  getAllMakes(): Observable<Car[]> {
-    return this.http.get<Car[]>(this.baseApiUrl + '/api/car/getAllMakes');
-  }
 
   getModelsForMake(): Observable<Car[]> {
     return this.http.get<Car[]>(this.baseApiUrl + '/api/car/GetModelsForMake');

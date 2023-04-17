@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CarcoreComponent } from './components/carcore/carcore.component';
+import { CarlistComponent } from './components/carcore/carlist/carlist.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: CarcoreComponent
+    component: CarlistComponent
   }
   // {
   //   path: 'carcore',
