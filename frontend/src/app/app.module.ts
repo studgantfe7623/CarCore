@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { CarlistComponent } from './components/carcore/carlist/carlist.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MakeDropdownComponent } from './components/carcore/make-dropdown/make-dropdown.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { MakeDropdownComponent } from './components/carcore/make-dropdown/make-d
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
