@@ -1,27 +1,17 @@
-<div class="container my-5">
-
-
-    <h1 class="mb-3">Cars</h1>
-
-    <app-make-dropdown></app-make-dropdown>
-
-
-    <table class="table" *ngIf="cars && cars.length > 0">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Marke</th>
-                <th>Modell</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let car of cars">
-                <td>{{ car.id }} </td>
-                <td>{{ car.make_Name }} </td>
-                <td>{{ car.model_Name }} </td>
-            </tr>
-        </tbody>
-    </table>
-    <p *ngIf="!cars || cars.length <= 0">No Cars found</p>
-</div>
+<table class="table" *ngIf="cars && cars.length > 0">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Marke</th>
+            <th>Modell</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let car of cars">
+            <td>{{ car.id }} </td>
+            <td>{{ car.make_Name }} </td>
+            <td>{{ car.model_Name }} </td>
+        </tr>
+    </tbody>
+</table>
+<p *ngIf="!cars || cars.length <= 0">No Cars found</p>

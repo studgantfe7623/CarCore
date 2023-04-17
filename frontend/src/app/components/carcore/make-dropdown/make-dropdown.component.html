@@ -1,13 +1,14 @@
-<div class="dropdown">
-    <select class="form-select" aria-label="Default select example" [(ngModel)]="selectedMake">
-        <option selected>Open this select menu</option>
-        <option *ngFor="let car of cars">{{ car.make_Name }}</option>
-    </select>
-    {{ selectedMake }}
+<div class="container my-5">
+    <h1 class="mb-3">Cars</h1>
 
-    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-        Dropdown button
-    </button>
+    <div class="dropdown">
+        <select class="form-select" aria-label="Default select example" [(ngModel)]="selectedMake">
+            <option selected>Marke auswählen</option>
+            <option *ngFor="let car of cars">{{ car.make_Name }}</option>
+        </select>
+    </div>
+
+    <button (click)="searchCars()" type="button" class="btn btn-primary">Suchen</button>
+
+    <app-carlist [cars]="carsForSelectedMake"></app-carlist>
 </div>
-
-<button (click)="searchCars()" type="button" class="btn btn-primary">Suchen</button>

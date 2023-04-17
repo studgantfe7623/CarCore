@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Car } from 'src/app/models/car.model';
 import { CarlistService } from 'src/app/services/carcore.service';
+import { Input } from '@angular/core';
 
 @Component({
   selector: 'app-carlist',
@@ -8,6 +9,8 @@ import { CarlistService } from 'src/app/services/carcore.service';
   styleUrls: ['./carlist.component.css']
 })
 export class CarlistComponent {
+  
+  @Input()
   cars: Car[] = []
 
   constructor(private carlistService: CarlistService) { }

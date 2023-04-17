@@ -10,7 +10,7 @@ import { MakeDropdownService } from 'src/app/services/make-dropdown.service';
 export class MakeDropdownComponent {
   cars: Car[] = []
   selectedMake: string = '';
-
+  carsForSelectedMake: Car[] = []
 
   constructor(private makeDropdownService: MakeDropdownService) { }
 
@@ -19,7 +19,6 @@ export class MakeDropdownComponent {
       .subscribe({
         next: (cars) => {
           this.cars = cars;
-          console.log(cars);
         },
         error: (response) => {
           console.log(response)
@@ -31,7 +30,10 @@ export class MakeDropdownComponent {
     this.makeDropdownService.searchCars(this.selectedMake)
       .subscribe({
         next: (cars) => {
-          console.log(cars)
+          this.carsForSelectedMake = cars;
+        },
+        error: (response) => {
+          console.log(response)
         }
       });
   }
