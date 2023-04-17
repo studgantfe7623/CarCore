@@ -1,20 +1,25 @@
 import { Component } from '@angular/core';
 import { Car } from 'src/app/models/car.model';
-import { CarcoreService } from 'src/app/services/carcore.service';
+import { CarlistService } from 'src/app/services/carcore.service';
 
 @Component({
-  selector: 'app-carcore',
-  templateUrl: './carcore.component.html',
-  styleUrls: ['./carcore.component.css']
+  selector: 'app-carlist',
+  templateUrl: './carlist.component.html',
+  styleUrls: ['./carlist.component.css']
 })
-export class CarcoreComponent {
+export class CarlistComponent {
+
 
   cars: Car[] = []
 
-  constructor(private carcoreService: CarcoreService) { }
+
+
+  
+
+  constructor(private carlistService: CarlistService) { }
 
   ngOnInit(): void {
-    this.carcoreService.getModelsForMake()
+    this.carlistService.getModelsForMake()
       .subscribe({
         next: (cars) => {
           this.cars = cars;
