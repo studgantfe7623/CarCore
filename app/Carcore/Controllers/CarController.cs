@@ -27,9 +27,9 @@ namespace Carcore.Controllers
 
         public IMongoCollection<T> ConnectToMongo<T>(in string collection)
         {
-            var client = new MongoClient(connectionString);
-            var db = client.GetDatabase(databaseName);
-            return db.GetCollection<T>(collection);
+            MongoClient mongoClient = new MongoClient(connectionString);
+            IMongoDatabase mongoDatabase = mongoClient.GetDatabase(databaseName);
+            return mongoDatabase.GetCollection<T>(collection);
         }
 
 
@@ -39,6 +39,17 @@ namespace Carcore.Controllers
         {
             string url = "https://vpic.nhtsa.dot.gov/api/vehicles/GetAllMakes?format=json";
             List<string> allowedMakes = _config.GetSection("AllowedMakes").Get<List<string>>();
+
+            IMongoCollection<T> _cacheCollection = ConnectToMongo<CarModel>(makeCollection);
+            var cachedResponse = await _cacheCollection.FindAsync(_ => true);
+            List<CarModel> cachedResponseList = cachedResponse.ToList();
+          
+            if (cachedResponseListAny())
+                return cachedResponseList;
+        
+
+            //var cachedResponse = await _cacheCollection.Find(c => c.url == url).FirstOrDefaultAsync();
+
 
             using (var client = new HttpClient())
             {
@@ -51,6 +62,9 @@ namespace Carcore.Controllers
                     string responseContent = await response.Content.ReadAsStringAsync();
                     CarResultModel result = JsonConvert.DeserializeObject<CarResultModel>(responseContent);
                     List<CarModel> makes = result.Results.Where(m => allowedMakes.Contains(m.Make_Name)).ToList();
+                    // cache Api response into mongoDb
+                    _cacheCollection.InsertMany(makes);
+
                     return makes;
                 }
                 else
