@@ -17,6 +17,7 @@ namespace Carcore.Controllers
         private const string connectionString = "mongodb://127.0.0.1:27017";
         private const string databaseName = "carcore_db";
         private const string makeCollection = "makes";
+        private const string modelCollection = "models";
         private readonly IConfiguration _config;
 
         public CarController(IConfiguration config)
@@ -40,16 +41,11 @@ namespace Carcore.Controllers
             string url = "https://vpic.nhtsa.dot.gov/api/vehicles/GetAllMakes?format=json";
             List<string> allowedMakes = _config.GetSection("AllowedMakes").Get<List<string>>();
 
-            IMongoCollection<T> _cacheCollection = ConnectToMongo<CarModel>(makeCollection);
-            var cachedResponse = await _cacheCollection.FindAsync(_ => true);
-            List<CarModel> cachedResponseList = cachedResponse.ToList();
-          
-            if (cachedResponseListAny())
-                return cachedResponseList;
-        
+            IMongoCollection<CarModel> _cacheCollection = ConnectToMongo<CarModel>(makeCollection);
+            List<CarModel> cachedResponse = await _cacheCollection.Find(_ => true).ToListAsync();
 
-            //var cachedResponse = await _cacheCollection.Find(c => c.url == url).FirstOrDefaultAsync();
-
+            if (cachedResponse.Any())
+                return cachedResponse;
 
             using (var client = new HttpClient())
             {
@@ -83,6 +79,12 @@ namespace Carcore.Controllers
             //var response = string.Empty;
             string url = "https://vpic.nhtsa.dot.gov/api/vehicles/getmodelsformake/" + selectedMake + "?format=json";
 
+            IMongoCollection<CarModel> _cacheCollection = ConnectToMongo<CarModel>(modelCollection);
+            List<CarModel> cachedResponse = await _cacheCollection.Find(c => c.Make_Name == selectedMake).ToListAsync();
+
+            if (cachedResponse.Any())
+                return cachedResponse;
+
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri(url);
@@ -93,6 +95,9 @@ namespace Carcore.Controllers
                 {
                     string responseContent = await response.Content.ReadAsStringAsync();
                     CarResultModel result = JsonConvert.DeserializeObject<CarResultModel>(responseContent);
+                    List<CarModel> models = result.Results.ToList();
+                    // cache Api response into mongoDb
+                    _cacheCollection.InsertMany(models);
                     return result.Results.ToList();
                 }
                 else
