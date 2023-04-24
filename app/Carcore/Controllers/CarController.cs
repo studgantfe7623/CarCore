@@ -5,7 +5,6 @@ using System.Net.Http.Headers;
 using MongoDB.Driver;
 using Carcore.Models;
 
-
 namespace Carcore.Controllers
 {
     [Route("api/[controller]")]
@@ -34,6 +33,14 @@ namespace Carcore.Controllers
         }
 
 
+        public void CreateExpireIndex(IMongoCollection<CarModel> collection)
+        {
+            CreateIndexOptions indexOptions = new CreateIndexOptions { ExpireAfter = TimeSpan.FromSeconds(30) };
+            IndexKeysDefinition<CarModel> indexKeys = Builders<CarModel>.IndexKeys.Ascending(c => c.CreatedAt);
+
+            collection.Indexes.CreateOne(new CreateIndexModel<CarModel>(indexKeys, indexOptions));
+        }
+
         [Route("getAllMakes")]
         [HttpGet]
         public async Task<List<CarModel>> GetAllMakes()
@@ -58,7 +65,10 @@ namespace Carcore.Controllers
                     string responseContent = await response.Content.ReadAsStringAsync();
                     CarResultModel result = JsonConvert.DeserializeObject<CarResultModel>(responseContent);
                     List<CarModel> makes = result.Results.Where(m => allowedMakes.Contains(m.Make_Name)).ToList();
+                    // Set the CreatedAt property to the current date and time
+                    makes.ForEach(m => m.CreatedAt = DateTime.Now);
                     // cache Api response into mongoDb
+                    CreateExpireIndex(_cacheCollection);
                     _cacheCollection.InsertMany(makes);
 
                     return makes;
@@ -97,8 +107,10 @@ namespace Carcore.Controllers
                     CarResultModel result = JsonConvert.DeserializeObject<CarResultModel>(responseContent);
                     List<CarModel> models = result.Results.ToList();
                     // cache Api response into mongoDb
+                    CreateExpireIndex(_cacheCollection);
                     _cacheCollection.InsertMany(models);
-                    return result.Results.ToList();
+
+                    return models;
                 }
                 else
                 {

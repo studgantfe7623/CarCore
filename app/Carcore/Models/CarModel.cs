@@ -13,6 +13,6 @@ namespace Carcode.Models
         public int Model_ID { get; set; }
         public string Model_Name { get; set; }
         public string Mfr_Name { get; set; }
-        public DateTimeOffset CreatedTime {get; set; }
+        public DateTime CreatedAt {get; set; }
     }
 }
