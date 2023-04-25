@@ -33,6 +33,7 @@ namespace Carcore.Controllers
         }
 
 
+        [NonAction]
         public void CreateExpireIndex(IMongoCollection<CarModel> collection)
         {
             CreateIndexOptions indexOptions = new CreateIndexOptions { ExpireAfter = TimeSpan.FromSeconds(30) };
