@@ -1,4 +1,5 @@
 using Carcore.Controllers;
+using Carcore.DataAccess;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +11,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddHttpClient<CarController>();
+
+builder.Services.AddScoped<ICarDataAccess, CarDataAccess>();
 
 var app = builder.Build();
 

@@ -1,9 +1,12 @@
 using Carcode.Models;
 using Carcore.Controllers;
 using Carcore.DataAccess;
+using Carcore.Models;
 using Moq;
 using Moq.Protected;
+using Newtonsoft.Json;
 using System.Net;
+using System.Text;
 
 namespace Carcore.Test
 {
@@ -19,12 +22,25 @@ namespace Carcore.Test
             // Arrange
             var mockDb = new Mock<ICarDataAccess>();
             mockDb.Setup(x => x.getCachedMakes()).ReturnsAsync(new List<CarModel>());
+            //mockDb.Setup(x => x.CacheMakes(It.IsAny<List<CarModel>>()))
 
             var handlerMock = new Mock<HttpMessageHandler>();
+            var carResult = new CarResultModel
+            {
+                Count = 2,
+                Message = "Response returned successfully",
+                Results = new List<CarModel>{
+                    new CarModel { Make_ID = 582, Make_Name= "AUDI" },
+                    new CarModel { Make_ID=583, Make_Name ="BENTLEY"}
+                },
+                SearchCriteria = null
+            };
+            var json = JsonConvert.SerializeObject(carResult);
             var response = new HttpResponseMessage
             {
                 StatusCode = HttpStatusCode.OK,
-                Content = new StringContent(@"{""Count"":1,""Message"":""Response returned successfully"",""SearchCriteria"":null,""Results"":[]}"),
+                Content = new StringContent(json, Encoding.UTF8, "application/json")
+                //Content = new StringContent(@"{""Count"":1,""Message"":""Response returned successfully"",""SearchCriteria"":null,""Results"":[]}"),
             };
             handlerMock
                 .Protected()
@@ -34,15 +50,13 @@ namespace Carcore.Test
                   ItExpr.IsAny<CancellationToken>())
                 .ReturnsAsync(response);
             var httpClient = new HttpClient(handlerMock.Object);
-            _controller = new CarController(httpClient);
-
 
             // Act
-            var result2 = await _controller.GetAllMakes();
-
+            _controller = new CarController(httpClient, mockDb.Object);
+            var result = await _controller.GetAllMakes();
 
             // Assert
-
+            Assert.AreEqual(2, result.Count);
         }
 
     }

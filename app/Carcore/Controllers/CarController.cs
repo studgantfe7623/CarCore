@@ -16,14 +16,20 @@ namespace Carcore.Controllers
         //private const string url = "https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMakeId/440?format=json";
 
         private readonly IConfiguration _config;
-        private ICarDataAccess db;
+        private readonly ICarDataAccess _db;
 
-        public CarController(HttpClient httpClient)
+        public CarController(HttpClient httpClient, ICarDataAccess db)
         {
             _httpClient = httpClient;
-            db = new CarDataAccess();
+            _db = db;
         }
 
+
+    //public CarController(IConfiguration config)
+        //{
+        //    _config = config;
+        //    db = new CarDataAccess();
+        //}
 
 
         [Route("getAllMakes")]
@@ -38,7 +44,7 @@ namespace Carcore.Controllers
       "AUDI","ALFA","ROMEO","BENTLEY","BMW","BUGATTI","CHEVROLET","FERRARI","FIAT","FORD","HONDA","HYUNDAI","INFINITI",   "JAGUAR",    "KIA",    "KOENIGSEGG",    "KTM",   "LAMBORGHINI",    "LANCIA"   , "LEXUS",   "LOTUS","MAYBACH",   "MAZDA",    "MCLAREN",  "MERCEDES-BENZ", "MINI",    "MITSUBISHI",    "NISSAN",    "OPEL",  "PAGANI",   "PEUGEOT", "POLESTAR",  "PORSCHE",    "ROLLS",    "ROYCE",    "SAAB",   "SMART",    "SUBARU",   "SUZUKI",   "TESLA",    "TOYOTA",    "VOLKSWAGEN",   "VOLVO"
             };
 
-            List<CarModel> cachedResponse = await db.getCachedMakes();
+            List<CarModel> cachedResponse = await _db.getCachedMakes();
 
             if (cachedResponse.Any())
                 return cachedResponse;
@@ -56,7 +62,7 @@ namespace Carcore.Controllers
                 // Set the CreatedAt property to the current date and time
                 makes.ForEach(m => m.CreatedAt = DateTime.Now);
                 // cache Api response into mongoDb
-                await db.CacheMakes(makes);
+                await _db.CacheMakes(makes);
 
                 return makes;
             }
@@ -76,7 +82,7 @@ namespace Carcore.Controllers
             //var response = string.Empty;
             string url = "https://vpic.nhtsa.dot.gov/api/vehicles/getmodelsformake/" + selectedMake + "?format=json";
 
-            List<CarModel> cachedResponse = await db.getCachedModelsForMake(selectedMake);
+            List<CarModel> cachedResponse = await _db.getCachedModelsForMake(selectedMake);
 
             if (cachedResponse.Any())
                 return cachedResponse;
@@ -93,7 +99,7 @@ namespace Carcore.Controllers
                     CarResultModel result = JsonConvert.DeserializeObject<CarResultModel>(responseContent);
                     List<CarModel> models = result.Results.ToList();
                     // cache Api response into mongoDb
-                    await db.CacheModels(models);
+                    await _db.CacheModels(models);
 
                     return models;
                 }
