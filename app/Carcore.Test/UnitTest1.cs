@@ -2,11 +2,9 @@ using Carcode.Models;
 using Carcore.Controllers;
 using Carcore.DataAccess;
 using Carcore.Models;
-using Microsoft.Extensions.Configuration;
 using Moq;
 using Moq.Protected;
 using Newtonsoft.Json;
-using System.Diagnostics;
 using System.Net;
 using System.Text;
 
@@ -17,7 +15,11 @@ namespace Carcore.Test
     {
         private CarController _controller;
         private Mock<ICarDataAccess> mockDb;
-
+   
+        public UnitTest1()
+        {
+            mockDb = new Mock<ICarDataAccess>();
+        }
 
         [TestMethod]
         public async Task GetAllMakes_ReturnApiResponse()
