@@ -3,7 +3,7 @@ using Carcode.Models;
 
 namespace Carcore.DataAccess
 {
-    public class CarDataAccess
+    public class CarDataAccess : ICarDataAccess
     {
         private const string connectionString = "mongodb://127.0.0.1:27017";
         private const string databaseName = "carcore_db";

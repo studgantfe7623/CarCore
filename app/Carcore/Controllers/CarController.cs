@@ -12,14 +12,15 @@ namespace Carcore.Controllers
     [ApiController]
     public class CarController : ControllerBase
     {
+        private readonly HttpClient _httpClient;
         //private const string url = "https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMakeId/440?format=json";
 
         private readonly IConfiguration _config;
-        private CarDataAccess db;
+        private ICarDataAccess db;
 
-        public CarController(IConfiguration config)
+        public CarController(HttpClient httpClient)
         {
-            _config = config;
+            _httpClient = httpClient;
             db = new CarDataAccess();
         }
 
@@ -42,29 +43,28 @@ namespace Carcore.Controllers
             if (cachedResponse.Any())
                 return cachedResponse;
 
-            using (var client = new HttpClient())
+
+            _httpClient.BaseAddress = new Uri(url);
+            _httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+            HttpResponseMessage response = await _httpClient.GetAsync(url);
+            if (response.IsSuccessStatusCode)
             {
-                client.BaseAddress = new Uri(url);
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                string responseContent = await response.Content.ReadAsStringAsync();
+                CarResultModel result = JsonConvert.DeserializeObject<CarResultModel>(responseContent);
+                List<CarModel> makes = result.Results.Where(m => allowedMakes.Contains(m.Make_Name)).ToList();
+                // Set the CreatedAt property to the current date and time
+                makes.ForEach(m => m.CreatedAt = DateTime.Now);
+                // cache Api response into mongoDb
+                await db.CacheMakes(makes);
 
-                HttpResponseMessage response = await client.GetAsync(url);
-                if (response.IsSuccessStatusCode)
-                {
-                    string responseContent = await response.Content.ReadAsStringAsync();
-                    CarResultModel result = JsonConvert.DeserializeObject<CarResultModel>(responseContent);
-                    List<CarModel> makes = result.Results.Where(m => allowedMakes.Contains(m.Make_Name)).ToList();
-                    // Set the CreatedAt property to the current date and time
-                    makes.ForEach(m => m.CreatedAt = DateTime.Now);
-                    // cache Api response into mongoDb
-                    await db.CacheMakes(makes);
-
-                    return makes;
-                }
-                else
-                {
-                    throw new Exception(response.ReasonPhrase);
-                }
+                return makes;
             }
+            else
+            {
+                throw new Exception(response.ReasonPhrase);
+            }
+
         }
 
         // todo: Nach welcher Marke sucht der client?
