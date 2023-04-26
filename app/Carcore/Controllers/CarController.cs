@@ -25,7 +25,7 @@ namespace Carcore.Controllers
         }
 
 
-    //public CarController(IConfiguration config)
+        //public CarController(IConfiguration config)
         //{
         //    _config = config;
         //    db = new CarDataAccess();
@@ -87,27 +87,25 @@ namespace Carcore.Controllers
             if (cachedResponse.Any())
                 return cachedResponse;
 
-            using (var client = new HttpClient())
+            _httpClient.BaseAddress = new Uri(url);
+            _httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+            HttpResponseMessage response = await _httpClient.GetAsync(url);
+            if (response.IsSuccessStatusCode)
             {
-                client.BaseAddress = new Uri(url);
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                string responseContent = await response.Content.ReadAsStringAsync();
+                CarResultModel result = JsonConvert.DeserializeObject<CarResultModel>(responseContent);
+                List<CarModel> models = result.Results.ToList();
+                // cache Api response into mongoDb
+                await _db.CacheModels(models);
 
-                HttpResponseMessage response = await client.GetAsync(url);
-                if (response.IsSuccessStatusCode)
-                {
-                    string responseContent = await response.Content.ReadAsStringAsync();
-                    CarResultModel result = JsonConvert.DeserializeObject<CarResultModel>(responseContent);
-                    List<CarModel> models = result.Results.ToList();
-                    // cache Api response into mongoDb
-                    await _db.CacheModels(models);
-
-                    return models;
-                }
-                else
-                {
-                    throw new Exception(response.ReasonPhrase);
-                }
+                return models;
             }
+            else
+            {
+                throw new Exception(response.ReasonPhrase);
+            }
+
         }
     }
 }
