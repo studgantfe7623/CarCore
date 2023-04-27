@@ -44,5 +44,5 @@ jobs:
         run: |
           dotnet-sonarscanner begin /k:"studgantfe7623_CarCore" /o:"studgantfe7623" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
           dotnet build app/Carcore/Carcore.sln
-          coverlet app/Carcore.Test/bin/Debug/net7.0/Carcore.Test.dll --target "dotnet" --targetargs "test --no-build" -f=opencover -o="coverage.xml"
+          coverlet app/Carcore.Test/bin/Debug/net7.0/Carcore.Test.dll --target "dotnet" --targetargs "test app/Carcore.Test/Carcore.Test.csproj --no-build" -f=opencover -o="coverage.xml"
           dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
