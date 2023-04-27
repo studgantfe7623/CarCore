@@ -42,14 +42,13 @@ jobs:
         run: |
          dotnet tool install --global coverlet.console
 
-      - name: Run SonarCloud Analysis
+      - name: Start SonarCloud Analysis
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         shell: powershell
-        run: |
-          .\.sonar\scanner\dotnet-sonarscanner begin /k:"studgantfe7623_CarCore" /o:"studgantfe7623" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.opencover.reportsPaths=coverage.xml
-          .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
+        run: .\.sonar\scanner\dotnet-sonarscanner begin /k:"studgantfe7623_CarCore" /o:"studgantfe7623" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.opencover.reportsPaths=coverage.xml
+        
 
       - name: Build Project
         run: dotnet build --configuration Release
@@ -64,6 +63,9 @@ jobs:
         run: coverlet .\CarCore.Test\bin\Debug\net7.0\CarCore.Test.dll --target "dotnet" --targetargs "test .\Carcore.Test\Carcore.Test.csproj --no-build" -f=opencover -o="coverage.xml"
 
       
+      - name: Start SonarCloud Analysis
+        run: .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
+        
           
   
  
