@@ -41,7 +41,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: |
+        run: >
           dotnet-sonarscanner begin /k:"studgantfe7623_CarCore" 
               /o:"studgantfe7623" 
               /d:sonar.login="${{ secrets.SONAR_TOKEN }}" 
