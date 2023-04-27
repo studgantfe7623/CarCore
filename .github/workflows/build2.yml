@@ -41,16 +41,29 @@ jobs:
         shell: powershell
         run: |
          dotnet tool install --global coverlet.console
-      - name: Build and analyze
+
+      - name: Run SonarCloud Analysis
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         shell: powershell
         run: |
           .\.sonar\scanner\dotnet-sonarscanner begin /k:"studgantfe7623_CarCore" /o:"studgantfe7623" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.opencover.reportsPaths=coverage.xml
-          dir
-          dotnet build ./app/Carcore/Carcore.sln
-          dir
-          coverlet .\CarCore.Test\bin\Debug\net7.0\CarCore.Test.dll --target "dotnet" --targetargs "test .\Carcore.Test\Carcore.Test.csproj --no-build" -f=opencover -o="coverage.xml"
-          dir
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
+
+      - name: Build Project
+        run: dotnet build --configuration Release
+              # dotnet build ./app/Carcore/Carcore.sln
+
+
+      # - name: Run tests with coverage
+      #   run: dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
+
+
+      - name: Run tests with coverage
+        run: coverlet .\CarCore.Test\bin\Debug\net7.0\CarCore.Test.dll --target "dotnet" --targetargs "test .\Carcore.Test\Carcore.Test.csproj --no-build" -f=opencover -o="coverage.xml"
+
+      
+          
+  
+ 
