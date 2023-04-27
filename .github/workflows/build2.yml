@@ -51,7 +51,7 @@ jobs:
         
 
       - name: Build Project
-        run: dotnet build --configuration Release
+        run: dotnet build ./app/Carcore/Carcore.sln --configuration Release
               # dotnet build ./app/Carcore/Carcore.sln
 
 
@@ -63,7 +63,7 @@ jobs:
         run: coverlet .\CarCore.Test\bin\Debug\net7.0\CarCore.Test.dll --target "dotnet" --targetargs "test .\Carcore.Test\Carcore.Test.csproj --no-build" -f=opencover -o="coverage.xml"
 
       
-      - name: Start SonarCloud Analysis
+      - name: End SonarCloud Analysis
         run: .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
         
           
