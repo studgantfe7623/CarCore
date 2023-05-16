@@ -29,7 +29,7 @@ namespace Carcore.Test
         public async Task GetAllMakes_ReturnApiResponse()
         {
             //Datenbank muss hier gemoqqt werden damit nix in die DB geschrieben wird
-            //mockDb.Setup(x => x.getCachedMakes()).ReturnsAsync(new List<CarModel>());
+            mockDb.Setup(x => x.getCachedMakes()).ReturnsAsync(new List<CarModel>());
 
             var response = await _httpClient.GetAsync("api/Car/getAllMakes");
 
@@ -44,7 +44,7 @@ namespace Carcore.Test
         public async Task GetModelsForMake_ReturnsApiResponse()
         {
             //Datenbank muss hier gemoqqt werden damit nix in die DB geschrieben wird
-            //mockDb.Setup(x => x.getCachedMakes()).ReturnsAsync(new List<CarModel>());
+            mockDb.Setup(x => x.getCachedMakes()).ReturnsAsync(new List<CarModel>());
 
             var content = new StringContent("\"Toyota\"", Encoding.UTF8, "application/json");
             var response = await _httpClient.PostAsync("api/Car/GetModelsForMake", content);
