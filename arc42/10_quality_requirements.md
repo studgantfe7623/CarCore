@@ -1,109 +1,29 @@
 # Qualitätsanforderungen
 
-<div class="formalpara-title">
+**Functional Suitability** <!-- (Funktions- und Unit Tests)  -->
+- Die Anwendung kann Daten in eine externe Datenbank schreiben und die Daten erfolgreich daraus lesen. <!-- Testcontainers -->
+- Die Anwendung kann eine API aufrufen und die erwarteten Antworten empfangen. <!-- Testcontainers -->
 
-**Inhalt**
 
-</div>
+**Performance** <!-- (Lasttests) -->
+- Die erwartete Benutzerlast sind 100 gleichzeitige Benutzeranfragen.
+- Die durchschnittliche Reaktionszeit der Anwendung bei der definierten Benutzerlast liegt unter 1 Sekunde.
+- Die Anwendung ist in der Lage, 100 gleichzeitige Benutzeranfragen pro Sekunde zu verarbeiten, ohne dass die Antwortzeiten signifikant steigen.
 
-Dieser Abschnitt enthält möglichst alle Qualitätsanforderungen als
-Qualitätsbaum mit Szenarien. Die wichtigsten davon haben Sie bereits in
-Abschnitt 1.2 (Qualitätsziele) hervorgehoben.
 
-Nehmen Sie hier auch Qualitätsanforderungen geringerer Priorität auf,
-deren Nichteinhaltung oder -erreichung geringe Risiken birgt.
+**Maintainability**
+- Quellcode soll durch den Einsatz der passenden Patterns modular aufgebaut sein
+- Das Code Repository wird bei jedem Checkin automatisiert gebaut <!-- GitHub Actions -->
+- Alle Datenzugriffsoperationen erfolgen ausschließlich über die definierte Schnittstelle 
+- Alle Schnelllaufenden Tests (Unit Test, ..., halt keine End-to-end tests oder so) werden bei jedem Check-in getestet. <!-- GitHub Actions -->
+- Alle Auffälligkeiten aus der statischen Codeanalyse müssen beseitigt werden (0 Violation Policy) <!-- Sonarcloud -->
 
-<div class="formalpara-title">
 
-**Motivation**
+**Sicherheit**
+- Die Anwendung soll den Entwickler über veraltete Abhängigkeiten zu NuGet Paketen informieren und diese bei Bedarf direkt aktualisieren. <!-- GitHub Dependabot -->
+- Die Anwendung soll gegen die OWASP Top 10 Application Security Risks geschützt sein <!-- OWASP DependencyCheck -->
+- Es werden ausschließliche sichere Kommunikationsprotokolle verwendet (HTTPS statt HTTP)
 
-</div>
 
-Weil Qualitätsanforderungen die Architekturentscheidungen oft maßgeblich
-beeinflussen, sollten Sie die für Ihre Stakeholder relevanten
-Qualitätsanforderungen kennen, möglichst konkret und operationalisiert.
+Weitere Qualitätsanforderungen: Reliability, Skalierbarkeit
 
-<div class="formalpara-title">
-
-**Weiterführende Informationen**
-
-</div>
-
-Siehe [Qualitätsanforderungen](https://docs.arc42.org/section-10/) in
-der online-Dokumentation (auf Englisch!).
-
-## Qualitätsbaum
-
-<div class="formalpara-title">
-
-**Inhalt**
-
-</div>
-
-Der Qualitätsbaum (à la ATAM) mit Qualitätsszenarien an den Blättern.
-
-<div class="formalpara-title">
-
-**Motivation**
-
-</div>
-
-Die mit Prioritäten versehene Baumstruktur gibt Überblick über
-die — oftmals zahlreichen — Qualitätsanforderungen.
-
--   Baumartige Verfeinerung des Begriffes „Qualität“, mit „Qualität“
-    oder „Nützlichkeit“ als Wurzel.
-
--   Mindmap mit Qualitätsoberbegriffen als Hauptzweige
-
-In jedem Fall sollten Sie hier Verweise auf die Qualitätsszenarien des
-folgenden Abschnittes aufnehmen.
-
-## Qualitätsszenarien
-
-<div class="formalpara-title">
-
-**Inhalt**
-
-</div>
-
-Konkretisierung der (in der Praxis oftmals vagen oder impliziten)
-Qualitätsanforderungen durch (Qualitäts-)Szenarien.
-
-Diese Szenarien beschreiben, was beim Eintreffen eines Stimulus auf ein
-System in bestimmten Situationen geschieht.
-
-Wesentlich sind zwei Arten von Szenarien:
-
--   Nutzungsszenarien (auch bekannt als Anwendungs- oder
-    Anwendungsfallszenarien) beschreiben, wie das System zur Laufzeit
-    auf einen bestimmten Auslöser reagieren soll. Hierunter fallen auch
-    Szenarien zur Beschreibung von Effizienz oder Performance. Beispiel:
-    Das System beantwortet eine Benutzeranfrage innerhalb einer Sekunde.
-
--   Änderungsszenarien beschreiben eine Modifikation des Systems oder
-    seiner unmittelbaren Umgebung. Beispiel: Eine zusätzliche
-    Funktionalität wird implementiert oder die Anforderung an ein
-    Qualitätsmerkmal ändert sich.
-
-<div class="formalpara-title">
-
-**Motivation**
-
-</div>
-
-Szenarien operationalisieren Qualitätsanforderungen und machen deren
-Erfüllung mess- oder entscheidbar.
-
-Insbesondere wenn Sie die Qualität Ihrer Architektur mit Methoden wie
-ATAM überprüfen wollen, bedürfen die in Abschnitt 1.2 genannten
-Qualitätsziele einer weiteren Präzisierung bis auf die Ebene von
-diskutierbaren und nachprüfbaren Szenarien.
-
-<div class="formalpara-title">
-
-**Form**
-
-</div>
-
-Entweder tabellarisch oder als Freitext.

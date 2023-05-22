@@ -1,49 +1,37 @@
 # Lösungsstrategie
 
-<div class="formalpara-title">
+## Technologieentscheidungen
+![architecture-overview](images/drawio-architecture-overview.png)
 
-**Inhalt**
+### Backend: ASP.NET
+Da das Team am meisten Erfahrung im .NET Ökosystem würde sich für diesen Stack entschieden. 
+Außerdem ist das ASP.NET Framework speziell für die Entwicklung von Web APIs entwickelt worden und bringt deswegen alle notwendigen Funktionen mit sich.
 
-</div>
+### Frontend: Angular
+Im Frontend wird eine Single-Page-Anwendung gebaut.
+Daher schien Angular aufgrund der komponentenbasierten Entwicklung und dem dynamischen Nachladen als gute Wahl.
+Angular ist ein sehr umfangreiches Framework (vielleicht zu umfangreich für dieses Projekt), aber mit ein wenig Erfahrung ist es schnell.
 
-Kurzer Überblick über die grundlegenden Entscheidungen und
-Lösungsansätze, die Entwurf und Implementierung des Systems prägen.
-Hierzu gehören:
+### Datenbank: MongoDB
+Der Hauptgrund für die Verwendung der Document Database MongoDB ist, dass die externe API eine JSON-Datei zurückgibt.
+Strukturierte Datenformate wie JSON können in MongoDB gut gespeichert werden.
+Außerdem kann MongoDB mit dem Testcontainers-Projekt containerisiert werden, was das Schreiben von Integrationstests vereinfacht.
+Zuletzt wird MongoDB durch ein NuGet Paket in .NET unterstützt, was das Schreiben der Anfragen vereinfacht.
 
--   Technologieentscheidungen
 
--   Entscheidungen über die Top-Level-Zerlegung des Systems,
-    beispielsweise die Verwendung gesamthaft prägender Entwurfs- oder
-    Architekturmuster,
 
--   Entscheidungen zur Erreichung der wichtigsten Qualitätsanforderungen
-    sowie
+## Top-Level-Zerlegung des Systems
 
--   relevante organisatorische Entscheidungen, beispielsweise für
-    bestimmte Entwicklungsprozesse oder Delegation bestimmter Aufgaben
-    an andere Stakeholder.
+**NHTSA Vehicle API**
+Als externe API wird die Vehicle API von der US Behörde für Straßen und Fahrzeugsicherheit (NHTSA) eingebunden.
+Über die API kann eine umfassende Liste von Fahrzeugmarken- und Modellen abgerufen werden.
+Die API wurde ausgewählt, weil sie im Vergleich zu anderen Fahrzeugdaten-APIs kostenlos und frei verfügbar ist (kein API-Key notwendig). 
+Dafür enthält die API jedoch keine Daten zu den Fahrzeugpreisen.
 
-<div class="formalpara-title">
+**3 Schichten Architektur**
+    
 
-**Motivation**
+ 
 
-</div>
+## Entscheidungen zur Erreichung der wichtigsten Qualitätsanforderungen 
 
-Diese wichtigen Entscheidungen bilden wesentliche „Eckpfeiler“ der
-Architektur. Von ihnen hängen viele weitere Entscheidungen oder
-Implementierungsregeln ab.
-
-<div class="formalpara-title">
-
-**Form**
-
-</div>
-
-Fassen Sie die zentralen Entwurfsentscheidungen **kurz** zusammen.
-Motivieren Sie, ausgehend von Aufgabenstellung, Qualitätszielen und
-Randbedingungen, was Sie entschieden haben und warum Sie so entschieden
-haben. Vermeiden Sie redundante Beschreibungen und verweisen Sie eher
-auf weitere Ausführungen in Folgeabschnitten.
-
-Siehe [Lösungsstrategie](https://docs.arc42.org/section-4/) in der
-online-Dokumentation (auf Englisch!).
