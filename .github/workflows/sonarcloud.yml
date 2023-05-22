@@ -37,7 +37,7 @@ jobs:
       - name: Install Coverlet CLI
         run: |
           dotnet tool install --global coverlet.console
-      - name: Build and analyze
+      - name: Build Project and Generate Test Coverage
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}

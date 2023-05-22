@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\WS SQS\\CarCore\\app\\Carcore.Test\\Carcore.Test.csproj": {}
+    "C:\\Users\\Felix\\Downloads\\CarCore\\app\\Carcore.Test\\Carcore.Test.csproj": {}
   },
   "projects": {
-    "C:\\WS SQS\\CarCore\\app\\Carcore.Test\\Carcore.Test.csproj": {
+    "C:\\Users\\Felix\\Downloads\\CarCore\\app\\Carcore.Test\\Carcore.Test.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\WS SQS\\CarCore\\app\\Carcore.Test\\Carcore.Test.csproj",
+        "projectUniqueName": "C:\\Users\\Felix\\Downloads\\CarCore\\app\\Carcore.Test\\Carcore.Test.csproj",
         "projectName": "Carcore.Test",
-        "projectPath": "C:\\WS SQS\\CarCore\\app\\Carcore.Test\\Carcore.Test.csproj",
-        "packagesPath": "C:\\Users\\Felix G\\.nuget\\packages\\",
-        "outputPath": "C:\\WS SQS\\CarCore\\app\\Carcore.Test\\obj\\",
+        "projectPath": "C:\\Users\\Felix\\Downloads\\CarCore\\app\\Carcore.Test\\Carcore.Test.csproj",
+        "packagesPath": "C:\\Users\\Felix\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Felix\\Downloads\\CarCore\\app\\Carcore.Test\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Felix G\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Felix\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -28,8 +28,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\WS SQS\\CarCore\\app\\Carcore\\Carcore.csproj": {
-                "projectPath": "C:\\WS SQS\\CarCore\\app\\Carcore\\Carcore.csproj"
+              "C:\\Users\\Felix\\Downloads\\CarCore\\app\\Carcore\\Carcore.csproj": {
+                "projectPath": "C:\\Users\\Felix\\Downloads\\CarCore\\app\\Carcore\\Carcore.csproj"
               }
             }
           }
@@ -52,6 +52,10 @@
               "target": "Package",
               "version": "[2.2.10, )"
             },
+            "Microsoft.AspNetCore.Mvc.Testing": {
+              "target": "Package",
+              "version": "[7.0.5, )"
+            },
             "Microsoft.NET.Test.Sdk": {
               "target": "Package",
               "version": "[17.5.0, )"
@@ -59,6 +63,14 @@
             "Moq": {
               "target": "Package",
               "version": "[4.18.4, )"
+            },
+            "Testcontainers": {
+              "target": "Package",
+              "version": "[3.1.0, )"
+            },
+            "Testcontainers.MongoDb": {
+              "target": "Package",
+              "version": "[3.1.0, )"
             },
             "coverlet.collector": {
               "target": "Package",
@@ -81,21 +93,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\WS SQS\\CarCore\\app\\Carcore\\Carcore.csproj": {
+    "C:\\Users\\Felix\\Downloads\\CarCore\\app\\Carcore\\Carcore.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\WS SQS\\CarCore\\app\\Carcore\\Carcore.csproj",
+        "projectUniqueName": "C:\\Users\\Felix\\Downloads\\CarCore\\app\\Carcore\\Carcore.csproj",
         "projectName": "Carcore",
-        "projectPath": "C:\\WS SQS\\CarCore\\app\\Carcore\\Carcore.csproj",
-        "packagesPath": "C:\\Users\\Felix G\\.nuget\\packages\\",
-        "outputPath": "C:\\WS SQS\\CarCore\\app\\Carcore\\obj\\",
+        "projectPath": "C:\\Users\\Felix\\Downloads\\CarCore\\app\\Carcore\\Carcore.csproj",
+        "packagesPath": "C:\\Users\\Felix\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Felix\\Downloads\\CarCore\\app\\Carcore\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Felix G\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Felix\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -157,7 +169,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }

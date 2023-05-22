@@ -5,7 +5,13 @@ namespace Carcore.DataAccess
 {
     public class CarDataAccess : ICarDataAccess
     {
-        private const string connectionString = "mongodb://127.0.0.1:27017";
+        private readonly IConfiguration _config;
+
+        public CarDataAccess(IConfiguration config)
+        {
+            _config = config;
+        }
+
         private const string databaseName = "carcore_db";
         private const string MakeCollection = "makes";
         private const string ModelCollection = "models";
@@ -13,6 +19,7 @@ namespace Carcore.DataAccess
 
         public IMongoCollection<T> ConnectToMongo<T>(in string collection)
         {
+            string connectionString = _config.GetValue<string>("connectionString");
             MongoClient mongoClient = new MongoClient(connectionString);
             IMongoDatabase mongoDatabase = mongoClient.GetDatabase(databaseName);
             return mongoDatabase.GetCollection<T>(collection);
