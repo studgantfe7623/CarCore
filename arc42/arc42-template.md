@@ -92,8 +92,7 @@ Unterschied.
 Hier ein Überblick möglicher Themen (basierend auf dem ISO 25010
 Standard):
 
-![Kategorien von
-Qualitätsanforderungen](images/01_2_iso-25010-topics-DE.drawio.png)
+![Kategorien von Qualitätsanforderungen](images/01_2_iso-25010-topics-DE.drawio.png)
 
 <div class="formalpara-title">
 

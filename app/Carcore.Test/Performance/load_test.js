@@ -13,7 +13,7 @@ export let options = {
     thresholds: {
         http_req_duration: [{
             threshold: 'p(90) < 2000', // 99% of request mus complete below 150ms
-            // abortOnFail: true,
+            abortOnFail: true,
         }]
     },
 };
