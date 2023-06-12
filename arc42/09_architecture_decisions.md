@@ -6,16 +6,12 @@
 
 </div>
 
-Wichtige, teure, große oder riskante Architektur- oder
-Entwurfsentscheidungen inklusive der jeweiligen Begründungen. Mit
-"Entscheidungen" meinen wir hier die Auswahl einer von mehreren
-Alternativen unter vorgegebenen Kriterien.
+Wichtige, teure, große oder riskante Architektur- oder Entwurfsentscheidungen inklusive der jeweiligen Begründungen. 
+Mit "Entscheidungen" meinen wir hier die Auswahl einer von mehreren Alternativen unter vorgegebenen Kriterien.
 
-Wägen Sie ab, inwiefern Sie Entscheidungen hier zentral beschreiben,
-oder wo eine lokale Beschreibung (z.B. in der Whitebox-Sicht von
-Bausteinen) sinnvoller ist. Vermeiden Sie Redundanz. Verweisen Sie evtl.
-auf Abschnitt 4, wo schon grundlegende strategische Entscheidungen
-beschrieben wurden.
+Wägen Sie ab, inwiefern Sie Entscheidungen hier zentral beschreiben, oder wo eine lokale Beschreibung (z.B. in der Whitebox-Sicht von Bausteinen) sinnvoller ist. 
+Vermeiden Sie Redundanz. 
+Verweisen Sie evtl. auf Abschnitt 4, wo schon grundlegende strategische Entscheidungen beschrieben wurden.
 
 <div class="formalpara-title">
 
@@ -31,6 +27,13 @@ nachvollziehen können.
 **Form**
 
 </div>
+
+
+| **Titel** | **Status** | **Context** | **Entscheidung** | **Konsequenzen** |
+|-----------------|-------------------|-----------------|-------------------|-------------------|
+| .NET Core als Architektur Framework | Akzeptiert | Als Framework haben wir uns für .NET Core entschieden. Als Alternativen Standen noch Java und TypeScript zur Verfügung. |  Ich habe mich für .NET entschieden, weil ich mich nur damit auskenne. | Ich befinde mich im .NET Stack und nutze die dafür vorgesehen Tools. (Beispielsweise MS Test als Testing Framework → diese "Unter"-Entscheidung muss dann nicht mehr dokumentiert werden, weil es der "Go-to" in der .NET Umgebung ist) |
+| MSTest als Unit Testing Framework | Akzeptiert | Als bekannte Unit Testing Frameworks gibt es in .NET NUnit, xUnit.net und MSTest. Die Frameworks unterscheiden sich in ihrer Funktionalität nur gering. |  Da ich schon in der Arbeit mit MSTest gearbeitet habe und ich mich daher damit am besten aus kenne, wurde sich für MSTest als Unit Testing Framework entschieden. |  Die Code-Annotationen unterscheiden sich |
+
 
 Verschiedene Möglichkeiten:
 
