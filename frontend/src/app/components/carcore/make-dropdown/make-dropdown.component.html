@@ -1,14 +1,19 @@
 <div class="container my-5">
     <h1 class="mb-3">Cars</h1>
 
-    <div class="dropdown">
-        <select class="form-select" aria-label="Default select example" [(ngModel)]="selectedMake">
-            <option selected>Marke auswählen</option>
-            <option *ngFor="let car of cars">{{ car.make_Name }}</option>
-        </select>
-    </div>
+    <div class="row">
+        <div class="col-md-6 dropdown">
+            <select class="form-select" aria-label="Default select example" [(ngModel)]="selectedMake">
+                <option selected>Marke auswählen</option>
+                <option *ngFor="let car of cars">{{ car.make_Name }}</option>
+            </select>
+        </div>
 
-    <button (click)="searchCars()" type="button" class="btn btn-primary">Suchen</button>
+        <div class="col-md-6">
+            <button (click)="searchCars()" type="button" class="btn btn-primary"
+                [disabled]="selectedMake === ''">Suchen</button>
+        </div>
+    </div>
 
     <app-carlist [cars]="carsForSelectedMake"></app-carlist>
 </div>
