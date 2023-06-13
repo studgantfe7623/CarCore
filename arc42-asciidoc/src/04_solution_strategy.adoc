@@ -4,3 +4,23 @@ ifndef::imagesdir[:imagesdir: ../images]
 == Lösungsstrategie
 
 
+=== Technologieentscheidungen
+
+=== Top-Level-Zerlegung des Systems
+
+=== Entscheidungen zur Erreichung der wichtigsten Qualitätsanforderungen 
+
+==== Sicherheit
+Dependabot::
+Dependabot wird eingesetzt um Packages aktuell zu halten.
+Es werden automatisch Emails verschickt, wenn Pakete Sicherheitslücken aufweisen. 
+Die Pakete müssen dann manuell aktualisiert werden.
+
+==== Benutzeroberfläche
+Cypress::
+E2E Tests in Angular (Acceptance Test-driven Development)
+ 
+
+link:../../frontend/cypress/e2e/spec.cy.ts[Link to My File]
+
+
