@@ -97,7 +97,7 @@ namespace Carcore.Test
             // Act and Assert
             _controller = new CarController(httpClient, mockDb.Object, _config);
 
-            await Assert.ThrowsExceptionAsync<Exception>(_controller.GetAllMakes);
+            await Assert.ThrowsExceptionAsync<HttpRequestException>(_controller.GetAllMakes);
         }
 
         [TestMethod]
