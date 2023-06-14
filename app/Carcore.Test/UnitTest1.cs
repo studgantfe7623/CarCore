@@ -14,7 +14,7 @@ namespace Carcore.Test
     [TestClass]
     public class UnitTest1
     {
-        private CarController? _controller;
+        private CarController _controller;
         private Mock<ICarDataAccess> mockDb;
         private IConfiguration _config;
    

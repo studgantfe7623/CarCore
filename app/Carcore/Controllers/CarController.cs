@@ -15,13 +15,14 @@ namespace Carcore.Controllers
         private readonly HttpClient _httpClient;
         private readonly IConfiguration _config;
         private readonly ICarDataAccess _db;
-        private const string baseApiUrl = "https://vpic.nhtsa.dot.gov/api/vehicles/";
+        private string baseApiUrl;
 
         public CarController(HttpClient httpClient, ICarDataAccess db, IConfiguration config)
         {
             _httpClient = httpClient;
             _db = db;
             _config = config;
+            baseApiUrl = _config.GetSection("baseApiUrl").Value;
         }
 
 
@@ -30,7 +31,7 @@ namespace Carcore.Controllers
         public async Task<List<CarModel>> GetAllMakes()
         {
             string url = baseApiUrl + "GetAllMakes?format=json";
-            List<string> allowedMakes = _config.GetSection("AllowedMakes").Get<List<string>>();
+            var allowedMakes = _config.GetSection("AllowedMakes").Get<List<string>>();
 
             List<CarModel> cachedResponse = await _db.getCachedMakes();
 
