@@ -10,6 +10,5 @@ FROM mcr.microsoft.com/dotnet/aspnet:7.0
 WORKDIR /app
 COPY --from=build /app ./
 
-EXPOSE 5000
 
 ENTRYPOINT ["dotnet", "Carcore.dll"]
