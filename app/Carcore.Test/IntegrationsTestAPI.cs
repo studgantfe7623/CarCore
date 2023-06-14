@@ -15,7 +15,7 @@ namespace Carcore.Test
     [TestClass]
     public class IntegrationsTestAPI
     {
-        private MongoDbContainer _mongoDbContainer;
+        private MongoDbContainer? _mongoDbContainer;
         private Mock<ICarDataAccess> mockDb;
         private WebApplicationFactory<Program> _webAppFactory;
 

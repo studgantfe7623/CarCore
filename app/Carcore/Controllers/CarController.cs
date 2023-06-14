@@ -15,7 +15,7 @@ namespace Carcore.Controllers
         private readonly HttpClient _httpClient;
         private readonly IConfiguration _config;
         private readonly ICarDataAccess _db;
-        private string baseApiUrl;
+        private readonly string baseApiUrl;
 
         public CarController(HttpClient httpClient, ICarDataAccess db, IConfiguration config)
         {
