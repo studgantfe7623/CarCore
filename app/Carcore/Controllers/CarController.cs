@@ -22,7 +22,7 @@ namespace Carcore.Controllers
             _httpClient = httpClient;
             _db = db;
             _config = config;
-            baseApiUrl = _config.GetSection("baseApiUrl").Value;
+            baseApiUrl = _config.GetValue<string>("baseApiUrl");
         }
 
 
