@@ -13,36 +13,24 @@ namespace Carcore.Controllers
     public class CarController : ControllerBase
     {
         private readonly HttpClient _httpClient;
-        //private const string url = "https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMakeId/440?format=json";
-
         private readonly IConfiguration _config;
         private readonly ICarDataAccess _db;
+        private const string baseApiUrl = "https://vpic.nhtsa.dot.gov/api/vehicles/";
 
-        public CarController(HttpClient httpClient, ICarDataAccess db)
+        public CarController(HttpClient httpClient, ICarDataAccess db, IConfiguration config)
         {
             _httpClient = httpClient;
             _db = db;
+            _config = config;
         }
-
-
-        //public CarController(IConfiguration config)
-        //{
-        //    _config = config;
-        //    db = new CarDataAccess();
-        //}
 
 
         [Route("getAllMakes")]
         [HttpGet]
         public async Task<List<CarModel>> GetAllMakes()
         {
-            string url = "https://vpic.nhtsa.dot.gov/api/vehicles/GetAllMakes?format=json";
-            //List<string> allowedMakes = _config.GetSection("AllowedMakes").Get<List<string>>();
-
-
-            List<string> allowedMakes = new List<string>{
-      "AUDI","ALFA","ROMEO","BENTLEY","BMW","BUGATTI","CHEVROLET","FERRARI","FIAT","FORD","HONDA","HYUNDAI","INFINITI",   "JAGUAR",    "KIA",    "KOENIGSEGG",    "KTM",   "LAMBORGHINI",    "LANCIA"   , "LEXUS",   "LOTUS","MAYBACH",   "MAZDA",    "MCLAREN",  "MERCEDES-BENZ", "MINI",    "MITSUBISHI",    "NISSAN",    "OPEL",  "PAGANI",   "PEUGEOT", "POLESTAR",  "PORSCHE",    "ROLLS",    "ROYCE",    "SAAB",   "SMART",    "SUBARU",   "SUZUKI",   "TESLA",    "TOYOTA",    "VOLKSWAGEN",   "VOLVO"
-            };
+            string url = baseApiUrl + "GetAllMakes?format=json";
+            List<string> allowedMakes = _config.GetSection("AllowedMakes").Get<List<string>>();
 
             List<CarModel> cachedResponse = await _db.getCachedMakes();
 
@@ -57,7 +45,7 @@ namespace Carcore.Controllers
             if (response.IsSuccessStatusCode)
             {
                 string responseContent = await response.Content.ReadAsStringAsync();
-                CarResultModel result = JsonConvert.DeserializeObject<CarResultModel>(responseContent);
+                var result = JsonConvert.DeserializeObject<CarResultModel>(responseContent);
                 List<CarModel> makes = result.Results.Where(m => allowedMakes.Contains(m.Make_Name)).ToList();
                 // Set the CreatedAt property to the current date and time
                 makes.ForEach(m => m.CreatedAt = DateTime.Now);
@@ -67,20 +55,14 @@ namespace Carcore.Controllers
                 return makes;
             }
             else
-            {
-                throw new Exception(response.ReasonPhrase);
-            }
-
+                throw new HttpRequestException(response.ReasonPhrase);
         }
 
-        // todo: Nach welcher Marke sucht der client?
         [Route("GetModelsForMake")]
         [HttpPost]
-        //public async Task<List<CarModel>> GetModelsForMake(Car car)
         public async Task<List<CarModel>> GetModelsForMake([FromBody] string selectedMake)
         {
-            //var response = string.Empty;
-            string url = "https://vpic.nhtsa.dot.gov/api/vehicles/getmodelsformake/" + selectedMake + "?format=json";
+            string url = baseApiUrl + "getmodelsformake/" + selectedMake + "?format=json";
 
             List<CarModel> cachedResponse = await _db.getCachedModelsForMake(selectedMake);
 
@@ -94,7 +76,7 @@ namespace Carcore.Controllers
             if (response.IsSuccessStatusCode)
             {
                 string responseContent = await response.Content.ReadAsStringAsync();
-                CarResultModel result = JsonConvert.DeserializeObject<CarResultModel>(responseContent);
+                var result = JsonConvert.DeserializeObject<CarResultModel>(responseContent);
                 List<CarModel> models = result.Results.ToList();
                 // cache Api response into mongoDb
                 await _db.CacheModels(models);
@@ -102,10 +84,7 @@ namespace Carcore.Controllers
                 return models;
             }
             else
-            {
-                throw new Exception(response.ReasonPhrase);
-            }
-
+                throw new HttpRequestException(response.ReasonPhrase);
         }
     }
 }

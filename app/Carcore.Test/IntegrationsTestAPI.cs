@@ -11,7 +11,7 @@ using Testcontainers.MongoDb;
 namespace Carcore.Test
 {
 
-    //purpose of this test class is to test the internal REST APi
+    //purpose of this test class is to test the internal REST API
     [TestClass]
     public class IntegrationsTestAPI
     {
@@ -71,7 +71,7 @@ namespace Carcore.Test
             var response = await _httpClient.GetAsync("api/Car/getAllMakes");
 
             Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
-            List<CarModel> models = await response.Content.ReadFromJsonAsync<List<CarModel>>();
+            var models = await response.Content.ReadFromJsonAsync<List<CarModel>>();
 
             Assert.IsNotNull(models);
             Assert.IsTrue(models.Count > 0);
@@ -88,7 +88,7 @@ namespace Carcore.Test
             var response = await _httpClient.PostAsync("api/Car/GetModelsForMake", content);
 
             Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
-            List<CarModel> models = await response.Content.ReadFromJsonAsync<List<CarModel>>();
+            var models = await response.Content.ReadFromJsonAsync<List<CarModel>>();
 
             Assert.IsNotNull(models);
             Assert.IsTrue(models.Count > 0);

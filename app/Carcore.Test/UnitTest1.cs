@@ -2,6 +2,7 @@ using Carcode.Models;
 using Carcore.Controllers;
 using Carcore.DataAccess;
 using Carcore.Models;
+using Microsoft.Extensions.Configuration;
 using Moq;
 using Moq.Protected;
 using Newtonsoft.Json;
@@ -13,12 +14,19 @@ namespace Carcore.Test
     [TestClass]
     public class UnitTest1
     {
-        private CarController _controller;
+        private CarController? _controller;
         private Mock<ICarDataAccess> mockDb;
+        private IConfiguration _config;
    
         public UnitTest1()
         {
             mockDb = new Mock<ICarDataAccess>();
+          
+            var configurationBuilder = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.Test.json", optional: true, reloadOnChange: true);
+
+            _config = configurationBuilder.Build();
         }
 
         [TestMethod]
@@ -37,7 +45,7 @@ namespace Carcore.Test
                     new CarModel { Make_ID = 582, Make_Name = "AUDI" },
                     new CarModel { Make_ID = 583, Make_Name = "BENTLEY"}
                 },
-                SearchCriteria = null
+                // SearchCriteria = null
             };
             var json = JsonConvert.SerializeObject(carResult);
             var response = new HttpResponseMessage
@@ -56,7 +64,7 @@ namespace Carcore.Test
             var httpClient = new HttpClient(handlerMock.Object);
 
             // Act
-            _controller = new CarController(httpClient, mockDb.Object);
+            _controller = new CarController(httpClient, mockDb.Object, _config);
             var result = await _controller.GetAllMakes();
 
             // Assert
@@ -87,8 +95,7 @@ namespace Carcore.Test
 
 
             // Act and Assert
-            _controller = new CarController(httpClient, mockDb.Object);
-          
+            _controller = new CarController(httpClient, mockDb.Object, _config);
 
             await Assert.ThrowsExceptionAsync<Exception>(_controller.GetAllMakes);
         }
@@ -129,7 +136,7 @@ namespace Carcore.Test
             var httpClient = new HttpClient(handlerMock.Object);
 
             // Act
-            _controller = new CarController(httpClient, mockDb.Object);
+            _controller = new CarController(httpClient, mockDb.Object, _config);
             var result = await _controller.GetModelsForMake(selectedMake);
 
             // Assert

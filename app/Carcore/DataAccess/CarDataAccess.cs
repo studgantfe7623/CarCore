@@ -19,7 +19,7 @@ namespace Carcore.DataAccess
 
         public IMongoCollection<T> ConnectToMongo<T>(in string collection)
         {
-            string connectionString = _config.GetValue<string>("connectionString");
+            var connectionString = _config.GetValue<string>("connectionString");
             MongoClient mongoClient = new MongoClient(connectionString);
             IMongoDatabase mongoDatabase = mongoClient.GetDatabase(databaseName);
             return mongoDatabase.GetCollection<T>(collection);
