@@ -11,16 +11,24 @@ ifndef::imagesdir[:imagesdir: ../images]
 === Entscheidungen zur Erreichung der wichtigsten Qualitätsanforderungen 
 
 ==== Sicherheit
-Dependabot::
-Dependabot wird eingesetzt um Packages aktuell zu halten.
+- Dependabot: hält Packages aktuell um Sicherheitslücken zu vermeiden.
 Es werden automatisch Emails verschickt, wenn Pakete Sicherheitslücken aufweisen. 
 Die Pakete müssen dann manuell aktualisiert werden.
+- link:https://sonarcloud.io/project/overview?id=studgantfe7623_CarCore[Sonarcloud]: Statische Codeanalyse + 
+Zero Validations Policy wird eingehalten
+image:sonarcloud.png[arc42] Template
 
 ==== Benutzeroberfläche
-Cypress::
+- link:../../frontend/cypress/e2e/spec.cy.ts[Cypress]:
 E2E Tests in Angular (Acceptance Test-driven Development)
  
 
-link:../../frontend/cypress/e2e/spec.cy.ts[Link to My File]
+=== Infrastruktur (Docker)
+Das Dockerfile wurde auf Security Risiken unteruscht <br> + 
+- link:https://github.com/hadolint/hadolint[hadolint] + 
+- link:https://github.com/projectatomic/dockerfile_lint[dockerfile-lint]: Das Dockerfile wurde auf die 
+link:basic_rules.yaml[basic_rules], link:recommended_label_rules.yaml[recommended_label_rules] und link:https://github.com/projectatomic/dockerfile_lint/blob/master/sample_rules/security_rules.yaml[security_rules] aus dem offiziellen dockerfile_lint Repository geprüft. 
+Anhand der Empfehlungen wurden Labels ergänzt.
+// und es wurde sichergestellt, dass der Container nicht als Root User ausgeführt wird.
 
 
