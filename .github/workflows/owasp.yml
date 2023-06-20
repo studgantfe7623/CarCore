@@ -14,18 +14,13 @@ jobs:
     name: Scan the webapplication
    
     steps:
-      - name: Setup Node
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
+      # - name: Setup Node
+      #   uses: actions/setup-node@v3
+      #   with:
+      #     node-version: 18
 
       - name: Checkout
         uses: actions/checkout@v3
-
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v3
-        with:
-          dotnet-version: 7.0.x
 
       - name: Start API
         run: |
@@ -33,13 +28,10 @@ jobs:
               dotnet build app/Carcore/Carcore.sln --no-incremental
               dotnet run --project app/Carcore/Carcore.csproj &
 
-
-      - name: Check API Accessibility
-        run: |
-          echo "Checking API accessibility..."
-          nc -zv localhost 5164
-
       - name: ZAP Scan
         uses: zaproxy/action-api-scan@v0.2.0
         with:
           target: 'http://localhost:5164/swagger/v1/swagger.json'
+          format: openapi
+          docker_name: owasp/zap2docker-stable
+          allow_issue_writing: false
