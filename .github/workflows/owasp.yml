@@ -32,7 +32,7 @@ jobs:
       - name: Check API Accessibility
         run: |
           echo "Checking API accessibility..."
-          nc -zv localhost 7076
+          nc -zv localhost 5164
 
       - name: ZAP Scan
         uses: zaproxy/action-api-scan@v0.2.0
