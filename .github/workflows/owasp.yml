@@ -28,6 +28,12 @@ jobs:
               dotnet build app/Carcore/Carcore.sln --no-incremental
               dotnet run --project app/Carcore/Carcore.csproj &
 
+
+      - name: Check API Accessibility
+        run: |
+          echo "Checking API accessibility..."
+          nc -zv localhost 7076
+
       - name: ZAP Scan
         uses: zaproxy/action-api-scan@v0.2.0
         with:
