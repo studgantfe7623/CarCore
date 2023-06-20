@@ -4,3 +4,8 @@ ifndef::imagesdir[:imagesdir: ../images]
 == Architekturentscheidungen
 
 
+|=====
+|Titel |Status |Context |Entscheidung |Konsequenzen
+|.NET Core als Architektur Framework |Akzeptiert |Als Framework haben wir uns für .NET Core entschieden. Als Alternativen Standen noch Java und TypeScript zur Verfügung. |Ich habe mich für .NET entschieden, weil ich mich nur damit auskenne. |Ich befinde mich im .NET Stack und nutze die dafür vorgesehen Tools. (Beispielsweise MS Test als Testing Framework → diese "Unter"-Entscheidung muss dann nicht mehr dokumentiert werden, weil es der "Go-to" in der .NET Umgebung ist)
+|MSTest als Unit Testing Framework |Akzeptiert |Als bekannte Unit Testing Frameworks gibt es in .NET NUnit, xUnit.net und MSTest. Die Frameworks unterscheiden sich in ihrer Funktionalität nur gering. |Da ich schon in der Arbeit mit MSTest gearbeitet habe und ich mich daher damit am besten aus kenne, wurde sich für MSTest als Unit Testing Framework entschieden. |Die Code-Annotationen unterscheiden sich
+|=====
