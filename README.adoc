@@ -149,7 +149,7 @@ Siehe https://arc42.org.
 === Entscheidungen zur Erreichung der wichtigsten Qualitätsanforderungen
 
 ==== Functional Suitability
-- link:app/Carcore.Test/UnitTest.cs[Unit Tests] mit Mocking
+- link:https://github.com/studgantfe7623/CarCore/blob/main/app/Carcore.Test/UnitTest.cs[Unit Tests] mit Mocking
 - link:https://github.com/studgantfe7623/CarCore/blob/main/app/Carcore.Test/IntegrationsTestAPI.cs[Integration Tests] schießen gegen die API und testen die Anwendung von Kopf bis Fuß.
 Die Datenbank wird mit link:https://dotnet.testcontainers.org/[Testcontainers] hochgefahren, damit den Tests auch in der CI Pipeline eine Datenbank zur Verfügung steht.
 
@@ -158,19 +158,19 @@ Die Datenbank wird mit link:https://dotnet.testcontainers.org/[Testcontainers] h
 - Dependabot: hält Packages aktuell um Sicherheitslücken zu vermeiden.
 Es werden automatisch Emails verschickt, wenn Pakete Sicherheitslücken aufweisen.
 Die Pakete müssen dann manuell aktualisiert werden.
-- link:https://github.com/studgantfe7623/CarCore/blob/main/.github/workflows/owasp.yml[OWASP ZAP] scannt die API auf Security Vulnerabilities mittels der Swagger Openapi Definition.
+- link:https://github.com/studgantfe7623/CarCore/blob/main/.github/workflows/owasp-zap.yml[OWASP ZAP] scannt die API auf Security Vulnerabilities mittels der Swagger Openapi Definition.
 Der Scan ist als GitHub Action umgesetzt und wird bei jedem Check-In durchgeführt.
 Ergebnis: 99 Bestanden, 2 Warnings.
-Für detailliertere Informationen siehe link:https://github.com/studgantfe7623/CarCore/blob/main/arc42-asciidoc/appendix/zap-scan-report.md[Report].
+Für detailliertere Informationen siehe link:https://github.com/studgantfe7623/CarCore/blob/main/documentation/appendix/zap-scan-report.md[Report].
 
 
 ==== Benutzeroberfläche
-- link:../../frontend/cypress/e2e/spec.cy.ts[Cypress]:
+- link:https://github.com/studgantfe7623/CarCore/blob/main/frontend/cypress/e2e/spec.cy.ts[Cypress]:
 E2E Tests in Angular (Acceptance Test-driven Development)
 
 
 ==== Maintainability
-- https://github.com/studgantfe7623/CarCore/blob/main/.github/workflows/sonarcloud.yml[Build Pipeline]  via GitHub Actions baut die Anwendung bei jedem Git Check-In. Falls der Build-Vorgang fehschlägt, zeugt das die Pipeline an.
+- link:https://github.com/studgantfe7623/CarCore/blob/main/.github/workflows/sonarcloud.yml[Build Pipeline]  via GitHub Actions baut die Anwendung bei jedem Git Check-In. Falls der Build-Vorgang fehschlägt, zeugt das die Pipeline an.
 
 ==== Statische Codeanalyse
 - link:https://sonarcloud.io/project/overview?id=studgantfe7623_CarCore[Sonarcloud]: Statische Codeanalyse +
@@ -220,7 +220,7 @@ Ergebnisse:::
 - Je näher man an die 400 gleichzeitigen Benutzer kommt, desto wahrscheinlicher wird eine Zeitüberschreitung.
 - Das System erholt sich wieder, wenn die Anforderungslast abnimmt.
 - Die Belastungsgrenze des Systems liegt bei ca. 300 gleichzeitigen Benutzern.
-- Während des Lasttests wurden insgesamt 52920 erfolgreiche und 35 fehlgeschlagene Anfragen ausgeführt. +
+- Während des Lasttests wurden insgesamt 52920 erfolgreiche und 35 fehlgeschlagene Anfragen ausgeführt.
 
 Spike Test::
 Der Spike-Test ist eine Variante des Stresstests, bei dem die Belastung nicht schrittweise erhöht wird, sondern in einem sehr kurzen Zeitfenster Spitzenwerte erreicht werden.
