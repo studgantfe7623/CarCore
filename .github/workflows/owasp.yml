@@ -1,0 +1,35 @@
+
+name: OWASP Zap Scan
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  zap_scan:
+    runs-on: ubuntu-latest
+    name: Scan the webapplication
+   
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          ref: master
+
+      - name: Start API
+        run: |
+              dotnet restore
+              dotnet build app/Carcore/Carcore.sln --no-incremental
+              dotnet build 
+              dotnet run --project Carcore/Carcore.csproj &
+
+      - name: ZAP Scan
+        uses: zaproxy/action-full-scan@v0.4.0
+        with:
+          docker_name: 'owasp/zap2docker-stable'
+          target: 'http://localhost:7076/swagger/v1/swagger.json'
+          rules_file_name: '.zap/rules.tsv'
+          cmd_options: '-a'
