@@ -10,25 +10,85 @@ ifndef::imagesdir[:imagesdir: ../images]
 
 === Entscheidungen zur Erreichung der wichtigsten Qualitätsanforderungen 
 
+==== Functional Suitability
+- link:https://github.com/studgantfe7623/CarCore/blob/main/app/Carcore.Test/UnitTest1.cs[Unit Tests] mit Mocking
+- link:https://github.com/studgantfe7623/CarCore/blob/main/app/Carcore.Test/IntegrationsTestAPI.cs[Integration Tests] schießen gegen die API und testen die Anwendung von Kopf bis Fuß
+
+
 ==== Sicherheit
 - Dependabot: hält Packages aktuell um Sicherheitslücken zu vermeiden.
 Es werden automatisch Emails verschickt, wenn Pakete Sicherheitslücken aufweisen. 
 Die Pakete müssen dann manuell aktualisiert werden.
-- link:https://sonarcloud.io/project/overview?id=studgantfe7623_CarCore[Sonarcloud]: Statische Codeanalyse + 
-Zero Validations Policy wird eingehalten
-image:sonarcloud.png[arc42] Template
+
 
 ==== Benutzeroberfläche
 - link:../../frontend/cypress/e2e/spec.cy.ts[Cypress]:
 E2E Tests in Angular (Acceptance Test-driven Development)
  
 
-=== Infrastruktur (Docker)
-Das Dockerfile wurde auf Security Risiken unteruscht <br> + 
-- link:https://github.com/hadolint/hadolint[hadolint] + 
+==== Maintainability
+- https://github.com/studgantfe7623/CarCore/blob/main/.github/workflows/sonarcloud.yml[Build Pipeline]  via GitHub Actions baut die Anwendung bei jedem Git Check-In. Falls der Build-Vorgang fehschlägt, zeugt das die Pipeline an. 
+
+==== Statische Codeanalyse
+- link:https://sonarcloud.io/project/overview?id=studgantfe7623_CarCore[Sonarcloud]: Statische Codeanalyse + 
+Übersicht über die SonarCloud Ergebnisse:
+// Zero Validations Policy wird eingehalten
+image:sonarcloud.png[arc42] 
+- https://github.com/coverlet-coverage/coverlet[Coverlet] erstellt Test Coverage Datei innerhalb der Build-Pipeline. 
+Test Coverage Datei wird in Sonarcloud hochgeladen.
+
+
+==== Infrastruktur (Docker)
+Das Dockerfile wurde auf Security Risiken untersucht 
+
+- link:https://github.com/hadolint/hadolint[hadolint] 
 - link:https://github.com/projectatomic/dockerfile_lint[dockerfile-lint]: Das Dockerfile wurde auf die 
 link:basic_rules.yaml[basic_rules], link:recommended_label_rules.yaml[recommended_label_rules] und link:https://github.com/projectatomic/dockerfile_lint/blob/master/sample_rules/security_rules.yaml[security_rules] aus dem offiziellen dockerfile_lint Repository geprüft. 
 Anhand der Empfehlungen wurden Labels ergänzt.
 // und es wurde sichergestellt, dass der Container nicht als Root User ausgeführt wird.
 
 
+==== Performance 
+Um das Qualitätskriterium Performance zu testen wurde das Performance Testing Tool K6 verwendet.
+Das Performance Testing beschränkt sich auf die HTTP-GET Methoden, da für die HTTP-POST Methoden eine Payload hätte generiert werden müssen.
+Für einen ersten Test der Performance erschien dieser Mehraufwand nicht gerechtfertigt.
+Um die Performance des Systems zu bestimmen, wurden Lasttests, Stresstests und Spike-Tests durchgeführt.
+
+Lasttest::
+Mit den Lasttests wurde versucht,  die aktuelle Performance des Systems in Bezug auf die Anzahl der gleichzeitigen Benutzer oder Anfragen pro Sekunde zu bewerten.
+image:last-test.png[Kategorien von Qualitätsanforderungen] 
+Die Abbildung zeigt wie der Lasttest für die Anfwendung aufgebaut ist. 
+Die Anfragelast wird langsam auf 100 Benutzeranfragen pro Sekunde gesteigert.
+Dieser Wert wird dann für 10 Minuten gehalten und anschließend wieder reduziert. 
+
+Ergebnis:::
+- Das System beantwortet Anfragen in weniger als 4 Sekunden für das 90%-Perzentil bei 100 Anfragen/Sekunde.
+
+Stresstest:: 
+Stresstests wurden eingesetzt um die Grenzen des Systems zu ermitteln.
+Ziel war es, die Stabilität und Zuverlässigkeit des Systems unter extremen Bedingungen zu überprüfen.
+image:stress-test.png[Kategorien von Qualitätsanforderungen]
+Im durchgeführten Stresstest wird die Anzahl der Anfragen pro Sekunde bis zur Belastungsgrenze und darüber hinaus gesteigert.
+Im Detail wird der Maximalwert von 400 Nutzeranfragen pro Sekunde nach 28 Minuten erreicht.
+Danach wird die Anforderungslast langsam reduziert, um zu sehen, ob sich das System erholt. 
+
+Ergebnisse:::
+- Bei 300 gleichzeitigen Anfragen kommt es vereinzelt zu Fehlern (Zeitüberschreitungen).
+- Je näher man an die 400 gleichzeitigen Benutzer kommt, desto wahrscheinlicher wird eine Zeitüberschreitung.
+- Das System erholt sich wieder, wenn die Anforderungslast abnimmt.
+- Die Belastungsgrenze des Systems liegt bei ca. 300 gleichzeitigen Benutzern.
+- Während des Lasttests wurden insgesamt 52920 erfolgreiche und 35 fehlgeschlagene Anfragen ausgeführt. +
+
+Spike Test::
+Der Spike-Test ist eine Variante des Stresstests, bei dem die Belastung nicht schrittweise erhöht wird, sondern in einem sehr kurzen Zeitfenster Spitzenwerte erreicht werden.
+Stresstests wurden durchgeführt, um festzustellen, wie sich das System bei einem plötzlichen Anstieg der Anfragelast verhält.
+image:spike-test.png[Kategorien von Qualitätsanforderungen]
+
+Ergebnis:::
+-  Das System reagierte schlecht. 
+Es produzierte Fehler während des Anfrage-Spikes, konnte sich aber erholen, nachdem der Spike nachgelassen hatte.
+
+Threats to Validity::
+Die Ergebnisse sind mit Vorsicht zu genießen, da die Lasttests in diesem Fall die Leistung des lokalen Rechners und nicht die der Anwendung testen.
+Wie in der folgenden Abbildung zu sehen ist, war die CPU-Auslastung auf dem lokalen Rechner ab 100 Anfragen pro Sekunde fast immer bei 100 %.
+image:cpu-load.png[cpu-load]
