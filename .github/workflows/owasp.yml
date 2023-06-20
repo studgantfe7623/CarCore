@@ -24,9 +24,6 @@ jobs:
               dotnet run --project app/Carcore/Carcore.csproj &
 
       - name: ZAP Scan
-        uses: zaproxy/action-full-scan@v0.4.0
+        uses: zaproxy/action-api-scan@v0.2.0
         with:
-          docker_name: 'owasp/zap2docker-stable'
           target: 'http://localhost:7076/swagger/v1/swagger.json'
-          rules_file_name: '.zap/rules.tsv'
-          cmd_options: '-a'
