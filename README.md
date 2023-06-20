@@ -1,4 +1,4 @@
-# CarCore
+<!-- # CarCore
 
 ## Arc 42
 1. [Einführung und Ziele](arc42/01_introduction_and_goals.md)
@@ -12,4 +12,4 @@
 1. [Architekturentscheidungen](arc42/09_architecture_decisions.md)
 1. [Qualitätsanforderungen](arc42/10_quality_requirements.md)
 1. [Risiken und technische Schulden](arc42/11_technical_risks.md)
-1. [Glossar](arc42/12_glossary.md)
+1. [Glossar](arc42/12_glossary.md) -->

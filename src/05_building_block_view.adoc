@@ -11,6 +11,10 @@ ifndef::imagesdir[:imagesdir: ../images]
 
 _**<Übersichtsdiagramm>**_
 
+*Übersichtsdiagramm*
+
+Übersichtsdiagramm:: 
+
 Begründung:: _<Erläuternder Text>_
 
 Enthaltene Bausteine:: _<Beschreibung der enthaltenen Bausteine (Blackboxen)>_
