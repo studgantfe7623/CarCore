@@ -13,7 +13,7 @@ include::documentation/config.adoc[]
 :revremark: (basiert auf AsciiDoc Version)
 // toc-title definition MUST follow document title without blank line!
 :toc-title: Inhaltsverzeichnis
-
+ 
 //additional style for arc42 help callouts
 ifdef::backend-html5[]
 ++++
