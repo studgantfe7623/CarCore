@@ -12,13 +12,13 @@ using System.Text;
 namespace Carcore.Test
 {
     [TestClass]
-    public class UnitTest1
+    public class UnitTest
     {
         private CarController? _controller;
         private Mock<ICarDataAccess> mockDb;
         private IConfiguration _config;
 
-        public UnitTest1()
+        public UnitTest()
         {
             mockDb = new Mock<ICarDataAccess>();
 
