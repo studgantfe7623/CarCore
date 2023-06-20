@@ -161,7 +161,7 @@ Die Pakete müssen dann manuell aktualisiert werden.
 - link:https://github.com/studgantfe7623/CarCore/blob/main/.github/workflows/owasp.yml[OWASP ZAP] scannt die API auf Security Vulnerabilities mittels der Swagger Openapi Definition.
 Der Scan ist als GitHub Action umgesetzt und wird bei jedem Check-In durchgeführt.
 Ergebnis: 99 Bestanden, 2 Warnings.
-Für detailliertere Informationen siehe link:https://github.com/studgantfe7623/CarCore/blob/main/arc42-asciidoc/anhang/zap-scan-report.md[Report].
+Für detailliertere Informationen siehe link:https://github.com/studgantfe7623/CarCore/blob/main/arc42-asciidoc/appendix/zap-scan-report.md[Report].
 
 
 ==== Benutzeroberfläche
