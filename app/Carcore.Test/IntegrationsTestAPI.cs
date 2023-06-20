@@ -19,14 +19,10 @@ namespace Carcore.Test
         private Mock<ICarDataAccess> mockDb;
         private WebApplicationFactory<Program> _webAppFactory;
 
-        public IntegrationsTestAPI()
-        {
-            mockDb = new Mock<ICarDataAccess>();
-        }
-
         [TestInitialize]
         public async Task Initialize()
         {
+            mockDb = new Mock<ICarDataAccess>();
 
             var testProjectDir = Directory.GetCurrentDirectory();
             var configPath = Path.Combine(testProjectDir, "appsettings.Test.json");
@@ -55,8 +51,9 @@ namespace Carcore.Test
         [TestCleanup]
         public async Task Cleanup()
         {
-            // Stop and dispose of the MongoDB container
-            await _mongoDbContainer.StopAsync();
+            if (_mongoDbContainer != null)
+                // Stop and dispose of the MongoDB container
+                await _mongoDbContainer.StopAsync();
             //_mongoDbContainer.DisposeAsync();
         }
 
@@ -94,6 +91,25 @@ namespace Carcore.Test
             Assert.IsTrue(models.Count > 0);
         }
 
+        [TestMethod]
+        public async Task GetModelsForMake_ReturnsCachedResponse()
+        {
+            HttpClient _httpClient = _webAppFactory.CreateClient();
+
+            var content = new StringContent("\"Nissan\"", Encoding.UTF8, "application/json");
+            // first request caches Response
+            await _httpClient.PostAsync("api/Car/GetModelsForMake", content);
+
+
+            // second request gets the Response from cache
+            var response = await _httpClient.PostAsync("api/Car/GetModelsForMake", content);
+
+            Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
+            var models = await response.Content.ReadFromJsonAsync<List<CarModel>>();
+
+            Assert.IsNotNull(models);
+            Assert.IsTrue(models.Count > 0);
+        }
 
     }
 }

@@ -17,11 +17,11 @@ namespace Carcore.Test
         private CarController? _controller;
         private Mock<ICarDataAccess> mockDb;
         private IConfiguration _config;
-   
+
         public UnitTest1()
         {
             mockDb = new Mock<ICarDataAccess>();
-          
+
             var configurationBuilder = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appsettings.Test.json", optional: true, reloadOnChange: true);
@@ -34,7 +34,6 @@ namespace Carcore.Test
         {
             // Arrange         
             mockDb.Setup(x => x.getCachedMakes()).ReturnsAsync(new List<CarModel>());
-            //mockDb.Setup(x => x.CacheMakes(It.IsAny<List<CarModel>>()))
 
             var handlerMock = new Mock<HttpMessageHandler>();
             var carResult = new CarResultModel
@@ -45,14 +44,12 @@ namespace Carcore.Test
                     new CarModel { Make_ID = 582, Make_Name = "AUDI" },
                     new CarModel { Make_ID = 583, Make_Name = "BENTLEY"}
                 },
-                // SearchCriteria = null
             };
             var json = JsonConvert.SerializeObject(carResult);
             var response = new HttpResponseMessage
             {
                 StatusCode = HttpStatusCode.OK,
                 Content = new StringContent(json, Encoding.UTF8, "application/json")
-                //Content = new StringContent(@"{""Count"":1,""Message"":""Response returned successfully"",""SearchCriteria"":null,""Results"":[]}"),
             };
             handlerMock
                 .Protected()
@@ -69,6 +66,25 @@ namespace Carcore.Test
 
             // Assert
             Assert.AreEqual(2, result.Count);
+        }
+
+        [TestMethod]
+        public async Task GetAllMakes_ReturnCachedResponse()
+        {
+            // Arrange
+            var carModels = new List<CarModel>{
+                        new CarModel { Make_ID = 582, Make_Name = "AUDI" },
+                        new CarModel { Make_ID = 583, Make_Name = "BENTLEY"}
+                    };
+
+            mockDb.Setup(x => x.getCachedMakes()).ReturnsAsync(carModels);
+
+            // Act
+            _controller = new CarController(new HttpClient(), mockDb.Object, _config);
+            var result = await _controller.GetAllMakes();
+
+            // Assert
+            Assert.AreEqual(carModels, result);
         }
 
         [TestMethod]
