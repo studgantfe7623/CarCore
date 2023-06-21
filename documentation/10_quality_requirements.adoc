@@ -9,6 +9,7 @@ Functional Suitability::
 // Testcontainers 
 - Die Anwendung kann eine API aufrufen und die erwarteten Antworten empfangen. 
 // Testcontainers 
+- Die Anwendung bietet eine Oberfläche, über die Benutzer mit den Daten interagieren können 
 
 
 // Lasttests
@@ -27,6 +28,7 @@ Maintainability::
 // GitHub Actions 
 - Alle Auffälligkeiten aus der statischen Codeanalyse müssen beseitigt werden (0 Violation Policy) 
 // Sonarcloud 
+- Das System sollte eine Test Coverage von mindestens 80 % aufweisen.
 
 
 Sicherheit::

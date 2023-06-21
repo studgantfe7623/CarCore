@@ -7,19 +7,22 @@ ifndef::imagesdir[:imagesdir: ../images]
 
 === Aufgabenstellung
 
+Das Ziel der Anwendung Carcore ist, dass der Benutzer sich darüber informieren kann, welche Automarken es gibt und welche Modelle jede Automarke produziert, oder produziert hat.
+Der Benutzer kann zuerst aus einer Liste von Marken eine auswählen.
+Daraufhin werden ihm alle Modelle angezeigt, die von der Marke bis zum aktuellen Zeitpunkt produziert wurden. +
+Die Daten dazu stammen von einer öffentlich zugängliche Schnittstelle der US-Bundesbehörde für Straßen- und Fahrzeugsicherheit (National Highway Traffic Safety Administration, NHTSA) 
+
 
 
 === Qualitätsziele
 
+Die Haupt-Qualitätsziele sind Functional Suitability und Maintainability.
+Functional Suitability muss eingehalten werden, damit der Benutzer die zuvor definierten Aufgaben mit der Anwendung erledigen kann.
+Maintainability ist wichtig, damit das System auch in Zukunft erweitert und angepasst werden kann.
+In Kapitel 10 wird im Detail auf die Qualitätsziele eingegangen.
 
 
 === Stakeholder
 
-
-
-[cols="1,1,2" options="header"]
-|===
-|Rolle |Kontakt |Erwartungshaltung
-| _<Rolle-1>_ | _<Kontakt-1>_ | _<Erwartung-1>_
-| _<Rolle-2>_ | _<Kontakt-2>_ | _<Erwartung-2>_ 
-|===
+Da es sich um ein fiktives Studentenprojekt handelt hat das Projekt keine realen Stakeholder.
+Als Stakeholder könnten nur der studentische Ersteller des Projekts sowie den Bewerter von der Hochschule  als Stakeholder definiert werden.
