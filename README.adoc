@@ -466,11 +466,44 @@ _<Erklärung>_
 == Architekturentscheidungen
 
 
-|=====
-|Titel |Status |Context |Entscheidung |Konsequenzen
-|.NET Core als Architektur Framework |Akzeptiert |Als Framework haben wir uns für .NET Core entschieden. Als Alternativen Standen noch Java und TypeScript zur Verfügung. |Ich habe mich für .NET entschieden, weil ich mich nur damit auskenne. |Ich befinde mich im .NET Stack und nutze die dafür vorgesehen Tools. (Beispielsweise MS Test als Testing Framework → diese "Unter"-Entscheidung muss dann nicht mehr dokumentiert werden, weil es der "Go-to" in der .NET Umgebung ist)
-|MSTest als Unit Testing Framework |Akzeptiert |Als bekannte Unit Testing Frameworks gibt es in .NET NUnit, xUnit.net und MSTest. Die Frameworks unterscheiden sich in ihrer Funktionalität nur gering. |Da ich schon in der Arbeit mit MSTest gearbeitet habe und ich mich daher damit am besten aus kenne, wurde sich für MSTest als Unit Testing Framework entschieden. |Die Code-Annotationen unterscheiden sich
-|=====
+|===
+|Titel          |.NET Core als Architektur Framework
+|Status         |Akzeptiert
+|Kontext        |Als Framework haben wir uns für .NET Core entschieden. Als Alternativen Standen noch Java und TypeScript zur Verfügung.
+|Entscheidung   |Ich habe mich für .NET entschieden, weil ich mich nur damit auskenne.
+|Konsequenzen   |Ich befinde mich im .NET Stack und nutze die dafür vorgesehen Tools. (Beispielsweise MS Test als Testing Framework → diese "Unter"-Entscheidung muss dann nicht mehr dokumentiert werden, weil es der "Go-to" in der .NET Umgebung ist)
+|===
+
+
+|===
+|Titel          |MSTest als Unit Testing Framework
+|Status         |Akzeptiert
+|Kontext        |Als bekannte Unit Testing Frameworks gibt es in .NET NUnit, xUnit.net und MSTest. Die Frameworks unterscheiden sich in ihrer Funktionalität nur gering.
+|Entscheidung   |Da ich schon in der Arbeit mit MSTest gearbeitet habe und ich mich daher damit am besten aus kenne, wurde sich für MSTest als Unit Testing Framework entschieden.
+|Konsequenzen   |Die Code-Annotationen unterscheiden sich
+|===
+
+
+|===
+|Titel |MongoDB als Persistenztechnologie
+|Status |Akzeptiert
+|Kontext |Die Antwort der NHST API muss gechached werden um den Traffic zur API zu reduzieren.
+Es gibt viele Datenbanken, die als Alternative in Frage gekommen wären. Darunter Microsoft SQL, PostgreSQL, Cassandra Redis.
+Die Daten hätten aber auch einfach als Datei gespeichert werden können.
+|Entscheidung |Es wurde sich für MongoDB entschieden. Begründung siehe Kapitel 4.1. Technologieentscheidungen.
+|Konsequenzen |Da MongoDB keine relationale Datenbank ist, ist sie nicht in das Microsoft Entity Framework integriert.
+Das erschwert das Setup  der Integrationstests und der Build Pipeline.
+|===
+
+
+|===
+|Titel |Angular als Frontend Framework
+|Status |Akzeptiert
+|Kontext |Die Im Projekt gibt es die Bedingung, dass es eine Benutzeroberfläche geben muss.
+Als Alternative zu Angular gibt es von Microsoft Blazor. Außerdem standen andere JS-Frameworks wie Vue oder React zur Auswahl.
+|Entscheidung |Es wurde sich für Angular entschieden. Begründung siehe Kapitel 4.1. Technologieentscheidungen.
+|Konsequenzen |Frontend Projekt muss im Vergleich zu Blazor separat gestartet werden, Logik muss mit TypeScript implementiert werden.
+|===
 
 <<<<
 // 10. Qualitätsanforderungen
