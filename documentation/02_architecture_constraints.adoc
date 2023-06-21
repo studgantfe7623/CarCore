@@ -3,4 +3,10 @@ ifndef::imagesdir[:imagesdir: ../images]
 [[section-architecture-constraints]]
 == Randbedingungen
 
+Ein Teil der Randbedingungen ergibt sich aus den Vorgaben des Dozenten.
+Die Aufgabe bestand darin, eine Anwendung zu erstellen, die auf eine öffentliche API zugreift, diese Daten in der eigenen Anwendung verarbeitet und über eine Benutzeroberfläche darstellt.
+Die eigene Anwendung kann entweder im Node, .NET oder Java Stack erstellt werden. + 
+Außerdem enstehen weitere Randbedingungen Dadurch, dass die Anwendung die NHTSA Vehicle API zugreift. 
+Davon hängt beispielsweise ab, wie die Aufrufe an die API erfolgen müssen (REST) und in welchem Datenformat die Antwort zurückkommt. (JSON) .
+Eine OpenAPI-Definition für GetAllMakes und GetModelsForMake befindet sich im link:https://github.com/studgantfe7623/CarCore/blob/main/documentation/appendix/OpenAPI-definition.json[Anhang].
 

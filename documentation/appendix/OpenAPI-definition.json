@@ -1,0 +1,79 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "NHTSA",
+    "description": "OpenAPI Definition for the NHTSA Vehicle API",
+    "version": "1"
+  },
+  "servers": [
+    {
+      "url": "https://localhost:7076"
+    }
+  ],
+  "paths": {
+    "/api/Car/getAllMakes": {
+      "get": {
+        "description": "Auto generated using Swagger Inspector",
+        "responses": {
+          "200": {
+            "description": "Auto generated using Swagger Inspector"
+          }
+        },
+        "servers": [
+          {
+            "url": "https://localhost:7076"
+          }
+        ]
+      },
+      "servers": [
+        {
+          "url": "https://localhost:7076"
+        }
+      ]
+    },
+    "/api/Car/GetModelsForMake": {
+      "post": {
+        "description": "Auto generated using Swagger Inspector",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {}
+              },
+              "examples": {
+                "0": {
+                  "value": "\"opel\"\r\n"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Auto generated using Swagger Inspector",
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "type": "string"
+                },
+                "examples": {}
+              }
+            }
+          }
+        },
+        "servers": [
+          {
+            "url": "https://localhost:7076"
+          }
+        ]
+      },
+      "servers": [
+        {
+          "url": "https://localhost:7076"
+        }
+      ]
+    }
+  },
+  "components": {}
+}
