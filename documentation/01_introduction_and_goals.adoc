@@ -25,4 +25,4 @@ In Kapitel 10 wird im Detail auf die Qualitätsziele eingegangen.
 === Stakeholder
 
 Da es sich um ein fiktives Studentenprojekt handelt hat das Projekt keine realen Stakeholder.
-Als Stakeholder könnten nur der studentische Ersteller des Projekts sowie den Bewerter von der Hochschule  als Stakeholder definiert werden.
+Nur der Student, der das Projekt erstellt, und der Dozent, der das Projekt anschließend bewertet, können als Stakeholder definiert werden.

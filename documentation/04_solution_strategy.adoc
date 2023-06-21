@@ -55,7 +55,7 @@ Die Datenbank wird mit link:https://dotnet.testcontainers.org/[Testcontainers] h
 - Dependabot: hält Packages aktuell um Sicherheitslücken zu vermeiden.
 Es werden automatisch Emails verschickt, wenn Pakete Sicherheitslücken aufweisen. 
 Die Pakete müssen dann manuell aktualisiert werden.
-- link:https://github.com/studgantfe7623/CarCore/blob/main/.github/workflows/owasp-zap.yml[OWASP ZAP] scannt die API auf Security Vulnerabilities mittels der Swagger Openapi Definition. 
+- link:https://github.com/studgantfe7623/CarCore/blob/main/.github/workflows/owasp-zap.yml[OWASP ZAP] scannt die API auf Security Vulnerabilities mittels der Swagger OpenAPI Definition. 
 Der Scan ist als GitHub Action umgesetzt und wird bei jedem Check-In durchgeführt.
 Ergebnis: 99 Bestanden, 2 Warnings.
 Für detailliertere Informationen siehe link:https://github.com/studgantfe7623/CarCore/blob/main/documentation/appendix/zap-scan-report.md[Report].
@@ -67,7 +67,7 @@ E2E Tests in Angular (Acceptance Test-driven Development)
  
 
 ==== Maintainability
-- link:https://github.com/studgantfe7623/CarCore/blob/main/.github/workflows/sonarcloud.yml[Build Pipeline]  via GitHub Actions baut die Anwendung bei jedem Git Check-In. Falls der Build-Vorgang fehschlägt, zeugt das die Pipeline an. 
+- link:https://github.com/studgantfe7623/CarCore/blob/main/.github/workflows/sonarcloud.yml[Build Pipeline] via GitHub Actions baut die Anwendung bei jedem Git Check-In. Falls der Build-Vorgang fehlschlägt, zeugt das die Pipeline an. 
 
 ==== Statische Codeanalyse
 - link:https://sonarcloud.io/project/overview?id=studgantfe7623_CarCore[Sonarcloud]: Statische Codeanalyse + 
@@ -75,7 +75,7 @@ E2E Tests in Angular (Acceptance Test-driven Development)
 // Zero Validations Policy wird eingehalten
 image:sonarcloud.png[arc42] 
 - https://github.com/coverlet-coverage/coverlet[Coverlet] erstellt Test Coverage Datei innerhalb der Build-Pipeline. 
-Test Coverage Datei wird in Sonarcloud hochgeladen.
+Test Coverage Datei wird in SonarCloud hochgeladen.
 
 
 ==== Infrastruktur (Docker)
@@ -97,7 +97,7 @@ Um die Performance des Systems zu bestimmen, wurden Lasttests, Stresstests und S
 Lasttest::
 Mit den Lasttests wurde versucht,  die aktuelle Performance des Systems in Bezug auf die Anzahl der gleichzeitigen Benutzer oder Anfragen pro Sekunde zu bewerten.
 image:last-test.png[Kategorien von Qualitätsanforderungen] 
-Die Abbildung zeigt wie der Lasttest für die Anfwendung aufgebaut ist. 
+Die Abbildung zeigt wie der Lasttest für die Anwendung aufgebaut ist. 
 Die Anfragelast wird langsam auf 100 Benutzeranfragen pro Sekunde gesteigert.
 Dieser Wert wird dann für 10 Minuten gehalten und anschließend wieder reduziert. 
 

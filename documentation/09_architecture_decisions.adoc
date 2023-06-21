@@ -23,9 +23,9 @@ ifndef::imagesdir[:imagesdir: ../images]
 
 
 |===
-|Titel |MongoDB als Persistenztechnologie
+|Titel |MongoDB als Persistenz Technologie
 |Status |Akzeptiert
-|Kontext |Die Antwort der NHST API muss gechached werden um den Traffic zur API zu reduzieren. 
+|Kontext |Die Antwort der NHTSA API muss gechached werden um den Traffic zur API zu reduzieren. 
 Es gibt viele Datenbanken, die als Alternative in Frage gekommen wären. Darunter Microsoft SQL, PostgreSQL, Cassandra Redis.
 Die Daten hätten aber auch einfach als Datei gespeichert werden können.
 |Entscheidung |Es wurde sich für MongoDB entschieden. Begründung siehe Kapitel 4.1. Technologieentscheidungen.
