@@ -37,17 +37,17 @@ Sicherheit::
 - Es werden ausschließliche sichere Kommunikationsprotokolle verwendet (HTTPS statt HTTP)
 
 
-Weitere Qualitätsanforderungen: Reliability, Skalierbarkeit
+Usability::
+- Inkonsistente Benutzereingaben sollen erkannt werden 
+- Kontrollelemente sollen erst klickbar sein, wenn die Ausführung dieser einen Sinn ergibt. 
 
 
-.Weiterführende Informationen
-
-Siehe https://docs.arc42.org/section-10/[Qualitätsanforderungen] in der online-Dokumentation (auf Englisch!).
-
-=== Qualitätsbaum
+Andere Qualitätsanforderungen wie Reliability und Skalierbarkeit wurden als weniger relevant für die Anwendung angesehen.
 
 
 
-=== Qualitätsszenarien
+// .Weiterführende Informationen
+
+// Siehe https://docs.arc42.org/section-10/[Qualitätsanforderungen] in der online-Dokumentation (auf Englisch!).
 
 
