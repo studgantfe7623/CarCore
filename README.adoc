@@ -124,25 +124,28 @@ Eine OpenAPI-Definition für GetAllMakes und GetModelsForMake befindet sich im l
 [[section-system-scope-and-context]]
 == Kontextabgrenzung
 
-
-
-=== Fachlicher Kontext
-
-
-
-**<Diagramm und/oder Tabelle>**
-
-**<optional: Erläuterung der externen fachlichen Schnittstellen>**
-
-=== Technischer Kontext
+In diesem Kapitel wird die Architektur der Anwendung anhand von Architekturdiagrammen dargestellt.
+Die Diagramme wurden nach dem link:https://c4model.com/[C4 Modell] erstellt.
 
 
 
-**<Diagramm oder Tabelle>**
+=== Kontextdiagramm
 
-**<optional: Erläuterung der externen technischen Schnittstellen>**
+Das Kontextdiagramm zeigt die Anwendung  in der Mitte, umgeben vom Benutzer und den anderen Systemen, mit denen es interagiert.
+image:SQS-Kontext.drawio.png[Kontext]
 
-**<Mapping fachliche auf technische Schnittstellen>**
+=== Containerdiagramm
+
+Das Containerdiagramm zeigt den Aufbau der Software-Architektur und wie die Verantwortlichkeiten verteilt sind.
+Es zeigt auch die wichtigsten Technologieentscheidungen und wie die Container miteinander kommunizieren.
+image:SQS-Container.drawio.png[Container]
+
+
+
+=== Komponentendiagramm
+
+Das Komponentendiagramm zeigt, wie sich ein Container aus mehreren Komponenten zusammensetzt.
+image:SQS-Komponenten.drawio.png[Komponenten]
 
 <<<<
 // 4. Lösungsstrategie
