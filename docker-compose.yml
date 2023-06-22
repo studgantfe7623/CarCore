@@ -1,23 +1,22 @@
-version: '3'
+version: '3.4'
 services:
-  carcoredb:
-    container_name: carcoredb
+  mongodb:
     image: mongo:latest
     restart: always
     ports:
     - 27017:27017
 
-  carcore.api:
+  backend:
     container_name: carecoreapi
     build:
       context: .
-      dockerfile: Dockerfile-backend
+      dockerfile: Dockerfile
     restart: always
     ports:
       - 7076:80
     depends_on:
-      - carcoredb
+      - mongodb
     environment:
-      - connectionString=mongodb://carcoredb:27017
-      - ASPNETCORE_URLS=http://+:7076
+      - connectionString=mongodb://mongodb:27017
+    #   - ASPNETCORE_URLS=http://+:7076
 

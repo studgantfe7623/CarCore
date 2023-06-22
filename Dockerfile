@@ -4,7 +4,7 @@ FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 
 WORKDIR /source
 COPY . . 
-RUN dotnet restore "./app/Carcore/Carcore.csproj" --disable-parallel 
+RUN dotnet restore "./app/Carcore/Carcore.csproj" 
 RUN dotnet publish "./app/Carcore/Carcore.csproj" -c release -o /app --no-restore
 
 # Serve Stage
