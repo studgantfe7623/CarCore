@@ -466,6 +466,7 @@ _<Erklärung>_
 == Architekturentscheidungen
 
 
+[cols=",", options="header"]
 |===
 |Titel          |.NET Core als Architektur Framework
 |Status         |Akzeptiert
@@ -475,6 +476,7 @@ _<Erklärung>_
 |===
 
 
+[cols=",", options="header"]
 |===
 |Titel          |MSTest als Unit Testing Framework
 |Status         |Akzeptiert
@@ -484,6 +486,7 @@ _<Erklärung>_
 |===
 
 
+[cols=",", options="header"]
 |===
 |Titel |MongoDB als Persistenz Technologie
 |Status |Akzeptiert
@@ -496,6 +499,7 @@ Das erschwert das Setup  der Integrationstests und der Build Pipeline.
 |===
 
 
+[cols=",", options="header"]
 |===
 |Titel |Angular als Frontend Framework
 |Status |Akzeptiert
