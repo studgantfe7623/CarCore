@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33516.290
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Carcore", "Carcore\Carcore.csproj", "{ACD62102-CFA3-415C-8E65-11826E680A69}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Carcore", "Carcore.csproj", "{90034C8D-99CE-4BA9-BE60-DF5EC0330AEA}"
 EndProject
-Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{CE382228-D6B0-43F5-BF76-303CEA00405C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Carcore.Test", "..\Carcore.Test\Carcore.Test.csproj", "{C3656BC3-159C-433F-A0C6-BD7C7B5E5B5D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,19 +13,19 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{ACD62102-CFA3-415C-8E65-11826E680A69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{ACD62102-CFA3-415C-8E65-11826E680A69}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{ACD62102-CFA3-415C-8E65-11826E680A69}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{ACD62102-CFA3-415C-8E65-11826E680A69}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CE382228-D6B0-43F5-BF76-303CEA00405C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CE382228-D6B0-43F5-BF76-303CEA00405C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CE382228-D6B0-43F5-BF76-303CEA00405C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CE382228-D6B0-43F5-BF76-303CEA00405C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90034C8D-99CE-4BA9-BE60-DF5EC0330AEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90034C8D-99CE-4BA9-BE60-DF5EC0330AEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90034C8D-99CE-4BA9-BE60-DF5EC0330AEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90034C8D-99CE-4BA9-BE60-DF5EC0330AEA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3656BC3-159C-433F-A0C6-BD7C7B5E5B5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3656BC3-159C-433F-A0C6-BD7C7B5E5B5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3656BC3-159C-433F-A0C6-BD7C7B5E5B5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3656BC3-159C-433F-A0C6-BD7C7B5E5B5D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {53A00811-A221-4522-B379-574B1E6F20AF}
+		SolutionGuid = {3F8B6A38-BAC5-493E-9699-951B59239990}
 	EndGlobalSection
 EndGlobal
