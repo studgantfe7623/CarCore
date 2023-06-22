@@ -466,13 +466,26 @@ _<Erklärung>_
 == Architekturentscheidungen
 
 
+// Template
+// |===
+// |Titel |
+// |Status |
+// |Kontext |
+// |Entscheidung |
+// |Konsequenzen |
+// |===
+
+
 [cols=",", options="header"]
 |===
-|Titel          |.NET Core als Architektur Framework
+|Titel          |ASP.NET als Backend Architektur Framework
 |Status         |Akzeptiert
 |Kontext        |Als Framework haben wir uns für .NET Core entschieden. Als Alternativen Standen noch Java und TypeScript zur Verfügung.
 |Entscheidung   |Ich habe mich für .NET entschieden, weil ich mich nur damit auskenne.
-|Konsequenzen   |Ich befinde mich im .NET Stack und nutze die dafür vorgesehen Tools. (Beispielsweise MS Test als Testing Framework → diese "Unter"-Entscheidung muss dann nicht mehr dokumentiert werden, weil es der "Go-to" in der .NET Umgebung ist)
+|Konsequenzen   |Ich befinde mich im .NET Stack und nutze die dafür vorgesehen Tools (Beispielsweise MS Test als Testing Framework).
+//  ( → diese "Unter"-Entscheidung muss dann nicht mehr dokumentiert werden, weil es der "Go-to" in der .NET Umgebung ist)
+Darüber hinaus legt ASP.NET die Verwendung des Model-View-Controller-Pattern (MVC) fest.
+
 |===
 
 
@@ -507,6 +520,7 @@ Das erschwert das Setup  der Integrationstests und der Build Pipeline.
 Als Alternative zu Angular gibt es von Microsoft Blazor. Außerdem standen andere JS-Frameworks wie Vue oder React zur Auswahl.
 |Entscheidung |Es wurde sich für Angular entschieden. Begründung siehe Kapitel 4.1. Technologieentscheidungen.
 |Konsequenzen |Frontend Projekt muss im Vergleich zu Blazor separat gestartet werden, Logik muss mit TypeScript implementiert werden.
+Darüber hinaus legt ASP.NET die Verwendung des Model-View-ViewModel-Pattern (MVVM) fest.
 |===
 
 <<<<
