@@ -48,11 +48,11 @@ jobs:
           /d:sonar.host.url="https://sonarcloud.io"
           /d:sonar.cs.opencover.reportsPaths=coverage.xml
 
-          dotnet build app/Carcore/Carcore.sln
+          dotnet build Carcore/Carcore.sln
 
-          coverlet app/Carcore.Test/bin/Debug/net7.0/Carcore.Test.dll 
+          coverlet Carcore/CarCore.Test/bin/Debug/net7.0/Carcore.Test.dll 
           --target "dotnet" 
-          --targetargs "test app/Carcore.Test/Carcore.Test.csproj --no-build" 
+          --targetargs "test Carcore/CarCore.Test/CarCore.Test.csproj --no-build" 
           -f=opencover 
           -o="coverage.xml"
 
