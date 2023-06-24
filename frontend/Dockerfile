@@ -2,7 +2,7 @@
 # Build Stage for Angular
 FROM node:latest AS build
 WORKDIR /source
-COPY ./frontend .
+COPY . .
 RUN npm install
 RUN npm run build
 

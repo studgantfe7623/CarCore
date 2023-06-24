@@ -16,3 +16,12 @@ services:
      - 7076:443
     environment:
      - connectionString=mongodb://mongodb:27017
+
+  carcore.frontend:
+      image: ${DOCKER_REGISTRY-}carcorefrontend
+      build:
+        context: ../frontend
+        dockerfile: Dockerfile
+      restart: always
+      ports:
+        - 4200:80

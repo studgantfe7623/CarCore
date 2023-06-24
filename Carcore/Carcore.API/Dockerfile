@@ -19,4 +19,10 @@ RUN dotnet publish "Carcore.API.csproj" -c Release -o /app/publish /p:UseAppHost
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
+
+LABEL version="1.0.0"
+LABEL release="1"
+LABEL Name="Felix Ganterer <felix.ganterer@stud.th-rosenheim.de>"
+LABEL Vendor="Microsoft"
+
 ENTRYPOINT ["dotnet", "Carcore.API.dll"]
