@@ -93,7 +93,7 @@ Die Daten dazu stammen von einer öffentlich zugängliche Schnittstelle der US-B
 === Vorraussetzungen zum Ausführen der Anwendung
 
 Die einzige Vorraussetzung ist, dass Docker installiert ist.
-Um die Anwendung zu starten müssen die Befehle ausgeführt werden im Verzeichnis link:Carcore[Carcore]:
+Um die Anwendung zu starten, müssen die folgenden Befehle im Verzeichnis link:Carcore[Carcore] ausgeführt werden:
 
 1.  `+docker-compose build+` +
 Bei korrektem Verhalten werden die Docker images "carcorefrontend" und "carcoreapi" erstellt worden sein
