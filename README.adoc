@@ -1,3 +1,11 @@
+image::https://sonarcloud.io/images/project_badges/sonarcloud-black.svg[SonarCloud]
+image::https://sonarcloud.io/api/project_badges/measure?project=studgantfe7623_CarCore&metric=reliability_rating[Reliability Rating]
+image::https://sonarcloud.io/api/project_badges/measure?project=studgantfe7623_CarCore&metric=vulnerabilities[Vulnerabilities]
+image::https://sonarcloud.io/api/project_badges/measure?project=studgantfe7623_CarCore&metric=bugs[Bugs]
+image::https://sonarcloud.io/api/project_badges/measure?project=studgantfe7623_CarCore&metric=coverage[Coverage]
+image::https://sonarcloud.io/api/project_badges/measure?project=studgantfe7623_CarCore&metric=security_rating[Security Rating]
+
+
 // header file for arc42-template,
 // including all help texts
 //
@@ -88,6 +96,17 @@ Das Ziel der Anwendung Carcore ist, dass der Benutzer sich darüber informieren 
 Der Benutzer kann zuerst aus einer Liste von Marken eine auswählen.
 Daraufhin werden ihm alle Modelle angezeigt, die von der Marke bis zum aktuellen Zeitpunkt produziert wurden. +
 Die Daten dazu stammen von einer öffentlich zugängliche Schnittstelle der US-Bundesbehörde für Straßen- und Fahrzeugsicherheit (National Highway Traffic Safety Administration, NHTSA)
+
+
+=== Vorraussetzungen zum Ausführen der Anwendung
+
+Die einzige Vorraussetzung ist, dass Docker installiert ist.
+Um die Anwendung zu starten müssen die Befehle ausgeführt werden im Verzeichnis link:Carcore[Carcore]:
+
+1.  `+docker-compose build+` +
+Bei korrektem Verhalten werden die Docker images "carcorefrontend" und "carcoreapi" erstellt worden sein
+2. `+docker-compose up+` +
+Bei korrektem Verhalten werden drei Docker container erstellt (API, frontend, mongodb).
 
 
 
