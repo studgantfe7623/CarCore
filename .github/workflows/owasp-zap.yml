@@ -24,9 +24,9 @@ jobs:
 
       - name: Start API
         run: |
-              dotnet restore app/Carcore/Carcore.sln 
-              dotnet build app/Carcore/Carcore.sln --no-incremental
-              dotnet run --project app/Carcore/Carcore.csproj &
+              dotnet restore Carcore/Carcore.sln 
+              dotnet build Carcore/Carcore.sln --no-incremental
+              dotnet run --project Carcore/Carcore.API/Carcore.API.csproj &
 
       - name: ZAP Scan
         uses: zaproxy/action-api-scan@v0.2.0
