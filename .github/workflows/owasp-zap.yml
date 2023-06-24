@@ -31,7 +31,7 @@ jobs:
       - name: ZAP Scan
         uses: zaproxy/action-api-scan@v0.2.0
         with:
-          target: 'http://localhost:5164/swagger/v1/swagger.json'
+          target: 'http://localhost:7076/swagger/v1/swagger.json'
           format: openapi
           docker_name: owasp/zap2docker-stable
           allow_issue_writing: false
