@@ -237,12 +237,12 @@ E2E Tests in Angular (Acceptance Test-driven Development)
 
 [cols="a,a,a,a,a,a", frame=none, grid=none]
 |===
-| image::https://sonarcloud.io/api/project_badges/measure?project=studgantfe7623_CarCore&metric=bugs[Bugs]
-| image::https://sonarcloud.io/api/project_badges/measure?project=studgantfe7623_CarCore&metric=sqale_rating[Maintainability Rating]
-| image::https://sonarcloud.io/api/project_badges/measure?project=studgantfe7623_CarCore&metric=vulnerabilities[Vulnerabilities]
-| image::https://sonarcloud.io/api/project_badges/measure?project=studgantfe7623_CarCore&metric=security_rating[Security Rating]
+| image::https://sonarcloud.io/api/project_badges/measure?project=studgantfe7623_CarCore&metric=bugs[Bugs] <!--- Hide in GitHub -->
+| image::https://sonarcloud.io/api/project_badges/measure?project=studgantfe7623_CarCore&metric=sqale_rating[Maintainability Rating] <!--- Hide in GitHub -->
+| image::https://sonarcloud.io/api/project_badges/measure?project=studgantfe7623_CarCore&metric=vulnerabilities[Vulnerabilities] <!--- Hide in GitHub -->
+| image::https://sonarcloud.io/api/project_badges/measure?project=studgantfe7623_CarCore&metric=security_rating[Security Rating] <!--- Hide in GitHub -->
 | image::https://sonarcloud.io/api/project_badges/measure?project=studgantfe7623_CarCore&metric=coverage[Coverage]
-| image::https://sonarcloud.io/api/project_badges/measure?project=studgantfe7623_CarCore&metric=duplicated_lines_density[Duplicated Lines (%)]
+| image::https://sonarcloud.io/api/project_badges/measure?project=studgantfe7623_CarCore&metric=duplicated_lines_density[Duplicated Lines (%)] <!--- Hide in GitHub -->
 |===
 
 - https://github.com/coverlet-coverage/coverlet[Coverlet] erstellt Test Coverage Datei innerhalb der Build-Pipeline.
