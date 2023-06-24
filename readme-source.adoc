@@ -1,11 +1,3 @@
-image::https://sonarcloud.io/images/project_badges/sonarcloud-black.svg[SonarCloud]
-image::https://sonarcloud.io/api/project_badges/measure?project=studgantfe7623_CarCore&metric=reliability_rating[Reliability Rating]
-image::https://sonarcloud.io/api/project_badges/measure?project=studgantfe7623_CarCore&metric=vulnerabilities[Vulnerabilities]
-image::https://sonarcloud.io/api/project_badges/measure?project=studgantfe7623_CarCore&metric=bugs[Bugs]
-image::https://sonarcloud.io/api/project_badges/measure?project=studgantfe7623_CarCore&metric=coverage[Coverage]
-image::https://sonarcloud.io/api/project_badges/measure?project=studgantfe7623_CarCore&metric=security_rating[Security Rating]
-
-
 // header file for arc42-template,
 // including all help texts
 //
