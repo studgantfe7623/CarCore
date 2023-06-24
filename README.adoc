@@ -1,3 +1,11 @@
+image::https://sonarcloud.io/images/project_badges/sonarcloud-black.svg[SonarCloud]
+image::https://sonarcloud.io/api/project_badges/measure?project=studgantfe7623_CarCore&metric=reliability_rating[Reliability Rating]
+image::https://sonarcloud.io/api/project_badges/measure?project=studgantfe7623_CarCore&metric=vulnerabilities[Vulnerabilities]
+image::https://sonarcloud.io/api/project_badges/measure?project=studgantfe7623_CarCore&metric=bugs[Bugs]
+image::https://sonarcloud.io/api/project_badges/measure?project=studgantfe7623_CarCore&metric=coverage[Coverage]
+image::https://sonarcloud.io/api/project_badges/measure?project=studgantfe7623_CarCore&metric=security_rating[Security Rating]
+
+
 // header file for arc42-template,
 // including all help texts
 //
@@ -92,7 +100,7 @@ Die Daten dazu stammen von einer öffentlich zugängliche Schnittstelle der US-B
 
 === Vorraussetzungen zum Ausführen der Anwendung
 
-Die Einzige Vorraussetzung ist dass Docker installiert ist.
+Die einzige Vorraussetzung ist, dass Docker installiert ist.
 Um die Anwendung zu starten müssen die Befehle ausgeführt werden im Verzeichnis link:Carcore[Carcore]:
 
 1.  `+docker-compose build+` +
