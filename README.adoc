@@ -135,28 +135,9 @@ Eine OpenAPI-Definition für GetAllMakes und GetModelsForMake befindet sich im l
 [[section-system-scope-and-context]]
 == Kontextabgrenzung
 
-In diesem Kapitel wird die Architektur der Anwendung anhand von Architekturdiagrammen dargestellt.
-Die Diagramme wurden nach dem link:https://c4model.com/[C4 Modell] erstellt.
-
-
-
-=== Kontextdiagramm
-
 Das Kontextdiagramm zeigt die Anwendung  in der Mitte, umgeben vom Benutzer und den anderen Systemen, mit denen es interagiert.
+
 image:SQS-Kontext.drawio.png[Kontext]
-
-=== Containerdiagramm
-
-Das Containerdiagramm zeigt den Aufbau der Software-Architektur und wie die Verantwortlichkeiten verteilt sind.
-Es zeigt auch die wichtigsten Technologieentscheidungen und wie die Container miteinander kommunizieren.
-image:SQS-Container.drawio.png[Container]
-
-
-
-=== Komponentendiagramm
-
-Das Komponentendiagramm zeigt, wie sich ein Container aus mehreren Komponenten zusammensetzt.
-image:SQS-Komponenten.drawio.png[Komponenten]
 
 <<<<
 // 4. Lösungsstrategie
@@ -309,94 +290,21 @@ image:cpu-load.png[cpu-load]
 [[section-building-block-view]]
 == Bausteinsicht
 
+In diesem Kapitel wird die Architektur der Anwendung anhand von Architekturdiagrammen dargestellt.
+Die Diagramme wurden nach dem link:https://c4model.com/[C4 Modell] erstellt.
 
 
-=== Whitebox Gesamtsystem
+=== Containerdiagramm
+
+Das Containerdiagramm zeigt den Aufbau der Software-Architektur und wie die Verantwortlichkeiten verteilt sind.
+Es zeigt auch die wichtigsten Technologieentscheidungen und wie die Container miteinander kommunizieren.
+image:SQS-Container.drawio.png[Container]
 
 
+=== Komponentendiagramm
 
-_**<Übersichtsdiagramm>**_
-
-*Übersichtsdiagramm*
-
-Übersichtsdiagramm::
-
-Begründung:: _<Erläuternder Text>_
-
-Enthaltene Bausteine:: _<Beschreibung der enthaltenen Bausteine (Blackboxen)>_
-
-Wichtige Schnittstellen:: _<Beschreibung wichtiger Schnittstellen>_
-
-
-
-==== <Name Blackbox 1>
-
-
-
-_<Zweck/Verantwortung>_
-
-_<Schnittstelle(n)>_
-
-_<(Optional) Qualitäts-/Leistungsmerkmale>_
-
-_<(Optional) Ablageort/Datei(en)>_
-
-_<(Optional) Erfüllte Anforderungen>_
-
-_<(optional) Offene Punkte/Probleme/Risiken>_
-
-==== <Name Blackbox 2>
-
-_<Blackbox-Template>_
-
-==== <Name Blackbox n>
-
-_<Blackbox-Template>_
-
-
-==== <Name Schnittstelle 1>
-
-...
-
-==== <Name Schnittstelle m>
-
-=== Ebene 2
-
-
-
-==== Whitebox _<Baustein 1>_
-
-
-
-_<Whitebox-Template>_
-
-==== Whitebox _<Baustein 2>_
-
-_<Whitebox-Template>_
-
-...
-
-==== Whitebox _<Baustein m>_
-
-_<Whitebox-Template>_
-
-=== Ebene 3
-
-
-
-==== Whitebox <_Baustein x.1_>
-
-
-
-_<Whitebox-Template>_
-
-==== Whitebox <_Baustein x.2_>
-
-_<Whitebox-Template>_
-
-==== Whitebox <_Baustein y.1_>
-
-_<Whitebox-Template>_
+Das Komponentendiagramm zeigt, wie sich ein Container aus mehreren Komponenten zusammensetzt.
+image:SQS-Komponenten.drawio.png[Komponenten]
 
 <<<<
 // 6. Laufzeitsicht
@@ -404,20 +312,8 @@ _<Whitebox-Template>_
 [[section-runtime-view]]
 == Laufzeitsicht
 
-
-
-=== _<Bezeichnung Laufzeitszenario 1>_
-
-*  <hier Laufzeitdiagramm oder Ablaufbeschreibung einfügen>
-*  <hier Besonderheiten bei dem Zusammenspiel der Bausteine in diesem Szenario erläutern>
-
-=== _<Bezeichnung Laufzeitszenario 2>_
-
-...
-
-=== _<Bezeichnung Laufzeitszenario n>_
-
-...
+Die aktuelle Bereitstellung der Anwendung erfolgt über drei Dockerfiles (CarcoreAPI, frontend, datenbank), die gebündelt über ein docker-compose file ausgeführt werden können.
+Für die Zukunft ist geplant, die Anwendung auf Kubernetes zu betreiben.
 
 <<<<
 // 7. Verteilungssicht
@@ -425,37 +321,9 @@ _<Whitebox-Template>_
 [[section-deployment-view]]
 == Verteilungssicht
 
-
-
-=== Infrastruktur Ebene 1
-
-
-
-_**<Übersichtsdiagramm>**_
-
-Begründung:: _<Erläuternder Text>_
-
-Qualitäts- und/oder Leistungsmerkmale:: _<Erläuternder Text>_
-
-Zuordnung von Bausteinen zu Infrastruktur:: _<Beschreibung der Zuordnung>_
-
-=== Infrastruktur Ebene 2
-
-
-
-==== _<Infrastrukturelement 1>_
-
-_<Diagramm + Erläuterungen>_
-
-==== _<Infrastrukturelement 2>_
-
-_<Diagramm + Erläuterungen>_
-
-...
-
-==== _<Infrastrukturelement n>_
-
-_<Diagramm + Erläuterungen>_
+Die Bereitstellung der Infrastruktur ist in diesem Projekt nicht relevant, da diese out of scope war.
+Das Projekt ist nur für die lokale Ausführung auf dem Computer vorgesehen.
+Daher wird die Verteilungssicht nicht weiter ausgeführt.
 
 <<<<
 // 8. Querschnittliche Konzepte
@@ -463,21 +331,7 @@ _<Diagramm + Erläuterungen>_
 [[section-concepts]]
 == Querschnittliche Konzepte
 
-
-
-=== _<Konzept 1>_
-
-_<Erklärung>_
-
-=== _<Konzept 2>_
-
-_<Erklärung>_
-
-...
-
-=== _<Konzept n>_
-
-_<Erklärung>_
+Zum jetzigen Zeitpunkt sind querschnittliche Konzepte für das Projekt noch nicht relevant.
 
 <<<<
 // 9. Entscheidungen
@@ -606,8 +460,8 @@ Andere Qualitätsanforderungen wie Reliability und Skalierbarkeit wurden als wen
 [[section-technical-risks]]
 == Risiken und technische Schulden
 
-
-
+Da das Projekt noch relativ jung ist, sind noch keine spezifischen Risiken aufgetreten.
+Aus dem gleichen Grund wurden auch noch keine technischen Schulden aufgebaut.
 
 <<<<
 // 12. Glossar
