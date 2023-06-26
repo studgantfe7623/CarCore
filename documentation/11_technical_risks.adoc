@@ -3,5 +3,5 @@ ifndef::imagesdir[:imagesdir: ../images]
 [[section-technical-risks]]
 == Risiken und technische Schulden
 
-
-
+Da das Projekt noch relativ jung ist, sind noch keine spezifischen Risiken aufgetreten.
+Aus dem gleichen Grund wurden auch noch keine technischen Schulden aufgebaut.

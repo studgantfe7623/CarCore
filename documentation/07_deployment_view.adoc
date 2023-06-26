@@ -3,34 +3,6 @@ ifndef::imagesdir[:imagesdir: ../images]
 [[section-deployment-view]]
 == Verteilungssicht
 
-
-
-=== Infrastruktur Ebene 1
-
-
-
-_**<Übersichtsdiagramm>**_
-
-Begründung:: _<Erläuternder Text>_
-
-Qualitäts- und/oder Leistungsmerkmale:: _<Erläuternder Text>_
-
-Zuordnung von Bausteinen zu Infrastruktur:: _<Beschreibung der Zuordnung>_
-
-=== Infrastruktur Ebene 2
-
-
-
-==== _<Infrastrukturelement 1>_
-
-_<Diagramm + Erläuterungen>_
-
-==== _<Infrastrukturelement 2>_
-
-_<Diagramm + Erläuterungen>_
-
-...
-
-==== _<Infrastrukturelement n>_
-
-_<Diagramm + Erläuterungen>_
+Die Bereitstellung der Infrastruktur ist in diesem Projekt nicht relevant, da diese out of scope war.
+Das Projekt ist nur für die lokale Ausführung auf dem Computer vorgesehen.
+Daher wird die Verteilungssicht nicht weiter ausgeführt.

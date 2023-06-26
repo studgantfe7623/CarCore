@@ -3,17 +3,5 @@ ifndef::imagesdir[:imagesdir: ../images]
 [[section-runtime-view]]
 == Laufzeitsicht
 
-
-
-=== _<Bezeichnung Laufzeitszenario 1>_
-
-*  <hier Laufzeitdiagramm oder Ablaufbeschreibung einfügen>
-*  <hier Besonderheiten bei dem Zusammenspiel der Bausteine in diesem Szenario erläutern>
-
-=== _<Bezeichnung Laufzeitszenario 2>_
-
-...
-
-=== _<Bezeichnung Laufzeitszenario n>_
-
-...
+Die aktuelle Bereitstellung der Anwendung erfolgt über drei Dockerfiles (CarcoreAPI, frontend, datenbank), die gebündelt über ein docker-compose file ausgeführt werden können.
+Für die Zukunft ist geplant, die Anwendung auf Kubernetes zu betreiben. 

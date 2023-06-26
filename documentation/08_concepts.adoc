@@ -3,18 +3,4 @@ ifndef::imagesdir[:imagesdir: ../images]
 [[section-concepts]]
 == Querschnittliche Konzepte
 
-
-
-=== _<Konzept 1>_
-
-_<Erklärung>_
-
-=== _<Konzept 2>_
-
-_<Erklärung>_
-
-...
-
-=== _<Konzept n>_
-
-_<Erklärung>_
+Zum jetzigen Zeitpunkt sind querschnittliche Konzepte für das Projekt noch nicht relevant.
