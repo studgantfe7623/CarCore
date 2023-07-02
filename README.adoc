@@ -414,13 +414,6 @@ Functional Suitability::
 - Die Anwendung bietet eine Oberfläche, über die Benutzer mit den Daten interagieren können
 
 
-// Lasttests
-Performance::
-- Die erwartete Benutzerlast sind 100 gleichzeitige Benutzeranfragen.
-- Die durchschnittliche Antwortzeit der Anwendung bei der definierten Benutzerlast liegt unter 1 Sekunde.
-- Die Anwendung ist in der Lage, 150 gleichzeitige Benutzeranfragen pro Sekunde zu verarbeiten, ohne dass die durchschnittliche Antwortzeit auf über 3 Sekunden steigt.
-
-
 Maintainability::
 - Quellcode soll durch den Einsatz der passenden Patterns modular aufgebaut sein
 - Das Code Repository wird bei jedem Checkin automatisiert gebaut
@@ -433,8 +426,15 @@ Maintainability::
 - Das System sollte eine Test Coverage von mindestens 80 % aufweisen.
 
 
+// Lasttests
+Performance::
+- Die erwartete Benutzerlast sind 100 gleichzeitige Benutzeranfragen.
+- Die durchschnittliche Antwortzeit der Anwendung bei der definierten Benutzerlast liegt unter 1 Sekunde.
+- Die Anwendung ist in der Lage, 150 gleichzeitige Benutzeranfragen pro Sekunde zu verarbeiten, ohne dass die durchschnittliche Antwortzeit auf über 3 Sekunden steigt.
+
+
 Sicherheit::
-- Die Anwendung soll den Entwickler über veraltete Abhängigkeiten zu NuGet Paketen informieren und diese bei Bedarf direkt aktualisieren.
+- Die Anwendung soll den Entwickler über Sicherheitslücken von genutzten NuGet Paketen informieren.
 // GitHub Dependabot
 - Die Anwendung soll gegen die OWASP Top 10 Application Security Risks geschützt sein
 // OWASP DependencyCheck
