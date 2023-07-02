@@ -210,6 +210,8 @@ E2E Tests in Angular (Acceptance Test-driven Development)
 
 ==== Maintainability
 - link:https://github.com/studgantfe7623/CarCore/blob/main/.github/workflows/sonarcloud.yml[Build Pipeline] via GitHub Actions baut die Anwendung bei jedem Git Check-In. Falls der Build-Vorgang fehlschlägt, zeugt das die Pipeline an.
+- https://github.com/coverlet-coverage/coverlet[Coverlet] erstellt Test Coverage Datei innerhalb der Build-Pipeline.
+Test Coverage Datei wird in SonarCloud hochgeladen.
 - Die vorhandene link:https://github.com/studgantfe7623/CarCore/blob/main/Carcore/docker-compose.yml[Docker-Compose-Datei] bietet vor allem einen Mehrwert für Entwickler, die das Projekt Carcore nicht selbst gebaut haben.
 So können auch externe Entwickler das Projekt schnell zum Laufen bringen und eventuell in Zukunft die Wartung des Systems übernehmen.
 
@@ -227,8 +229,6 @@ image:https://sonarcloud.io/api/project_badges/measure?project=studgantfe7623_Ca
 image:https://sonarcloud.io/api/project_badges/measure?project=studgantfe7623_CarCore&metric=coverage[Coverage]
 image:https://sonarcloud.io/api/project_badges/measure?project=studgantfe7623_CarCore&metric=duplicated_lines_density[Duplicated Lines (%)]
 
-- https://github.com/coverlet-coverage/coverlet[Coverlet] erstellt Test Coverage Datei innerhalb der Build-Pipeline.
-Test Coverage Datei wird in SonarCloud hochgeladen.
 
 
 ==== Infrastruktur (Docker)
