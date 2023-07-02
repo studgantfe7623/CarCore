@@ -15,8 +15,8 @@ Functional Suitability::
 // Lasttests
 Performance:: 
 - Die erwartete Benutzerlast sind 100 gleichzeitige Benutzeranfragen.
-- Die durchschnittliche Reaktionszeit der Anwendung bei der definierten Benutzerlast liegt unter 1 Sekunde.
-- Die Anwendung ist in der Lage, 100 gleichzeitige Benutzeranfragen pro Sekunde zu verarbeiten, ohne dass die Antwortzeiten signifikant steigen.
+- Die durchschnittliche Antwortzeit der Anwendung bei der definierten Benutzerlast liegt unter 1 Sekunde.
+- Die Anwendung ist in der Lage, 150 gleichzeitige Benutzeranfragen pro Sekunde zu verarbeiten, ohne dass die durchschnittliche Antwortzeit auf über 3 Sekunden steigt.
 
 
 Maintainability::
